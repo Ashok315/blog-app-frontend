@@ -1,11 +1,11 @@
-FROM node:18-alpine AS build
+FROM node:18-alpine
 WORKDIR /frontend-app
 COPY package.json .
 RUN npm install
 COPY . .
 RUN npm run build
 RUN rm -rf /var/www/html/*
-COPY --from=build /frontend-app/dist /var/www/html
+COPY /frontend-app/dist /var/www/html
 CMD ["sudo","systemctl","reload","nginx"]
 
 
