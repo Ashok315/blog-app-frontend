@@ -182,7 +182,7 @@ export const Header = () => {
               {/* profile/auth-button */}
               <div className='flex justify-between items-center'>
                   <div className='flex items-center gap-2 rounded-md py-1'>
-                        <img src="/src/assets/images/profile.svg" alt="profile-image" className='max-w-[40px]' />   
+                        <img src="/assets/images/profile.svg" alt="profile-image" className='max-w-[40px]' />   
                       <div className='leading-4'>
                           <p className='text-gray-600 font-semibold'>Ashok Pateliya </p>
                           <p className='text-sm text-gray-500'>ashok@gmail.com</p>
