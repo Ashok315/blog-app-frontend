@@ -1,9 +1,9 @@
 import axios from "axios";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { logout } from "../redux/authSlice";
+
 axios.defaults.withCredentials=true
-const baseUrl="http://127.0.0.1:4000/api"
+const baseUrl=import.meta.env.VITE_API_BASE_URL;
+
 
 const api=axios.create({
     baseURL:baseUrl,
