@@ -52,7 +52,7 @@ const handleSubmit=async (e)=>{
                     <div className="max-w-[41rem] flex gap-4 mx-auto justify-between items-center py-8 px-3 md:px-7 shadow-2xl bg-white rounded-md">
                         {/* image section */}
                         <div className='hidden md:block'>
-                            <img src="/src/assets/images/signUp.png" alt="SignUpImage"  className='max-w-[17rem] pt-2 object-cover' />
+                            <img src="/assets/images/signUp.png" alt="SignUpImage"  className='max-w-[17rem] pt-2 object-cover' />
                         </div>
 
                         {/* form section */}
