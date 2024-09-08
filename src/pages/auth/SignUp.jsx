@@ -52,7 +52,7 @@ const handleSubmit=async (e)=>{
                     <div className="max-w-[41rem] flex gap-4 mx-auto justify-between items-center py-8 px-3 md:px-7 shadow-2xl bg-white rounded-md">
                         {/* image section */}
                         <div className='hidden md:block'>
-                            <img src="/assets/images/signUp.png" alt="SignUpImage"  className='max-w-[17rem] pt-2 object-cover' />
+                            <img src="/assets/images/signUp-min.png" alt="SignUpImage"  className='max-w-[17rem] pt-2 object-cover' />
                         </div>
 
                         {/* form section */}
@@ -92,7 +92,10 @@ const handleSubmit=async (e)=>{
                                     <span className='px-3'>Or</span>
                                     <span className='border border-gray-600 w-full h-0'></span>
                                 </div>
-                                <p className='text-sm text-center border border-gray-600 rounded-full py-1 mt-3 cursor-pointer'><FcGoogle className='inline-block text-lg mx-1 mt-[-0.13rem]'/> Continue with Google</p>
+
+                                <div className='text-center'>
+                                    <button className='text-sm border border-gray-600 rounded-md px-4 py-1 mt-3'><FcGoogle className='inline-block text-lg mx-1 mt-[-0.13rem]'/> Continue with Google</button>
+                                </div>
                             </form>
                             {error && <div className="error-message">{error}</div>}
                             {success && <div className="success-message">{success}</div>}

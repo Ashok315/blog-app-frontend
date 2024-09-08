@@ -112,10 +112,10 @@ export const Header = () => {
 
           
           {isAuthenticated?
-             /* profile/auth section */
+             /* profile/auth-section */
               <div ref={profileMenuRef} onClick={toggleProfileTag} className='hidden relative md:flex items-center gap-2 hover:bg-gray-200 rounded-md py-1 px-2 duration-200 cursor-pointer'>
                  
-                  <img src={userData?.image} alt="profile-image" className='max-w-[30px] rounded-full' />   
+                  <img src={userData?.image} alt="profile-image" className='w-[30px] h-[30px] max-w-[35px] max-h-[35px] rounded-full' />   
                   <div className='flex item-center gap-1'>
                     <p className='text-[0.8rem] text-gray-600 font-semibold capitalize'>{userData?.firstName+" "+userData?.lastName}</p>
                     <IoMdArrowDropdown className='text-lg'/>
@@ -135,7 +135,7 @@ export const Header = () => {
             :  
               /* login button */
               <div className='hidden md:block py-1'>
-                <Button type='button' onClick={()=>navigate('/sign_in')} className='bg-lightPrimary text-white hover:bg-primary duration-300'>Sign In</Button>
+                <Button type='button' onClick={()=>navigate('/sign_in')} className='text-white bg-lightPrimary hover:bg-primary duration-300'>Sign In</Button>
               </div>
             }
           
@@ -175,38 +175,45 @@ export const Header = () => {
               <div className='pb-[0.8rem] mb-[1rem] border-b-2 border-gray-300'>
                   <ul>
                     <li className='leading-7 mt-1'><Link to="/" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Home</Link></li>
-                    <li className='leading-7 mt-1'><Link to="/test" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">All Blogs</Link></li>
+                    <li className='leading-7 mt-1'><Link to="/blogs" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">All Blogs</Link></li>
                  </ul>
               </div>
                          
-              {/* profile/auth-button */}
-              <div className='flex justify-between items-center'>
-                  <div className='flex items-center gap-2 rounded-md py-1'>
-                        <img src="/assets/images/profile.svg" alt="profile-image" className='max-w-[40px]' />   
-                      <div className='leading-4'>
-                          <p className='text-gray-600 font-semibold'>Ashok Pateliya </p>
-                          <p className='text-sm text-gray-500'>ashok@gmail.com</p>
-                      </div>           
-                  </div>
-                   {/* themeButton */}
-                  <div className='border border-gray-500 rounded-full mr-4 p-[0.4rem] hover:bg-gray-200 duration-300 cursor-pointer'>
-                      <HiOutlineMoon className='text-[1rem] text-gray-800'/>
-                  </div>
-              </div>
+              {/* profile/auth-section */}
 
-              <div className='mt-2'>
-                 <ul> 
-                    <li className='leading-7 mt-1'><Link to="/" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Profile</Link></li>
-                    <li className='leading-7 mt-1'><Link to="/test" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">Add Blog</Link></li>
-                    <li className='leading-7 mt-1'><Link to="/test" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">My Blogs</Link></li>
-                    <li className='leading-7 mt-1'><Link to="/test" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Logout</Link></li>
-                 </ul>
-              </div>
+              {isAuthenticated?
+                 <>
+                      <div className='flex justify-between items-center'>
+                          <div className='flex items-center gap-2 rounded-md py-1'>
+                              <img src={userData?.image} alt="profile-image" className='w-[35px] h-[35px] max-w-[40px] max-h-[40px] rounded-full object-cover' />   
+                              <div className='leading-4'>
+                                  <p className='text-gray-600 font-semibold'>{userData?.firstName+" "+userData?.lastName}</p>
+                                  <p className='text-sm text-gray-500'>{userData?.email}</p>
+                              </div>           
+                          </div>
 
-              <div>
-                   <Button type='button' className='bg-lightPrimary text-white hover:bg-secondary ease-in-out duration-200'>Sign In</Button>
-              </div>
+                          {/* themeButton */}
+                          <div className='border border-gray-500 rounded-full mr-4 p-[0.4rem] hover:bg-gray-200 duration-300 cursor-pointer'>
+                              <HiOutlineMoon className='text-[1rem] text-gray-800'/>
+                          </div>
+                      </div>
 
+                      <div className='mt-2'>
+                        <ul> 
+                            <li className='leading-7 mt-1'><Link to="/profile" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Profile</Link></li>
+                            <li className='leading-7 mt-1'><Link to="/add_blog" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">Add Blog</Link></li>
+                            <li className='leading-7 mt-1'><Link to="/test" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">My Blogs</Link></li>
+                            <li className='leading-7 mt-1'><Link onClick={handleSignOut} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Logout</Link></li>
+                        </ul>
+                      </div>
+                  </>
+                 
+                  :
+                    <div>
+                      <Button type='button' onClick={()=>navigate('/sign_in')} className='text-white bg-lightPrimary hover:bg-primary duration-300'>Sign In</Button>
+                    </div>
+                }
+             
           </div>
 
       </nav>

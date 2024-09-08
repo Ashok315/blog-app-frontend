@@ -13,6 +13,8 @@ export const Profile = () => {
   let avtar=useRef();
 
   const dispatch=useDispatch();
+  
+  const [userAvtar,setUserAvtar]=useState(userData?.image)
   const [localImageUrl,setLocalImageUrl]=useState();
   const [uploadProgress,setUploadProgress]=useState()
 
@@ -30,19 +32,21 @@ export const Profile = () => {
     profileImage.append('image',e.target.files[0])
 
     let localImagePath=URL.createObjectURL(e.target.files[0])
-        setLocalImageUrl(localImagePath)
+        setUserAvtar(localImagePath)
         if(localImagePath){
 
             try{         
-              await authService.updateProfileImage(userData._id,profileImage,updateProgressStatus)
+               await authService.updateProfileImage(userData._id, profileImage, updateProgressStatus)
                           .then((res)=>{
                               dispatch(login(res.data.updatedUser))
                               setUploadProgress('')
                           })
-
             }
             catch(error){
+              setUploadProgress('')
+              setUserAvtar(userData?.image);
               throw new Error(error.message)
+              
             }
 
         }
@@ -103,7 +107,7 @@ export const Profile = () => {
               <ContentContainer width='max-w-xl'>
                 <div className='bg-white text-center rounded-md py-7 shadow-lg'>
                   <p className='text-lg font-semibold text-center'>My Profile</p>
-                    <img src={localImageUrl||userData?.image} className={`${uploadProgress?'opacity-50':''} mt-3 rounded-full w-[75px] max-w-[80px] max-h-[75px] mx-auto`} alt="profile_img" />
+                    <img src={userAvtar} className={`${uploadProgress?'opacity-50':''} mt-3 rounded-full w-[75px] h-[75px] object-cover max-w-[80px] max-h-[80px] mx-auto`} alt="profile_img" />
                     <Button onClick={()=>avtar.current.click()} className='text-[0.79rem] text-secondary mt-1'>{!uploadProgress&&'Edit picture'}</Button>
                     {uploadProgress &&<p className='text-secondary text-sm -mt-3'>Uploading...{uploadProgress}%</p>}
                     <form action="#">

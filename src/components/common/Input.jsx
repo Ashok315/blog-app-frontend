@@ -12,7 +12,7 @@ export const Input = React.forwardRef(({
   return (
           <>
               {label&&<label htmlFor={id} className='text-sm'>{label}</label>}
-              <input type={type} id={id} ref={ref}  className={`w-full h-[1.8rem] border text-sm border-lightBorder mt-0.5 rounded-full focus:outline-lightPrimary ${padding} ${className}`} {...props}/>
+              <input type={type} id={id} ref={ref}  className={`w-full h-[1.8rem] border text-sm border-lightBorder mt-0.5 rounded-md focus:outline-lightPrimary ${padding} ${className}`} {...props}/>
           </>
           
        
