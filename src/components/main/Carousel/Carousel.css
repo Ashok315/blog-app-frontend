@@ -1,0 +1,36 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.6;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 0.6;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* Apply animations to the carousel items */
+.carousel-item {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+    animation-fill-mode: forwards; /* Ensures animation stays in the end state */
+}
+
+.carousel-item.active {
+    opacity: 0.6;
+    z-index: 2;
+    animation: fadeIn 1.2s ease-in-out; /* Apply fade-in when the slide becomes active */
+}
+
+.carousel-item.exiting {
+    z-index: 1;
+    animation: fadeOut 1.5s ease-in-out; /* Apply fade-out when the slide is exiting */
+}

@@ -60,7 +60,7 @@ export const SignIn=()=>{
                         <div className="max-w-[41rem] flex gap-4 mx-auto justify-between items-center py-12 px-3 md:px-6 shadow-2xl bg-white rounded-md">
                             {/* image section */}
                             <div className='hidden md:block'>
-                                <img src="/assets/images/signIn.png" alt="SignUpImage"  className='max-w-[18rem] pt-2 object-cover' />
+                                <img src="/assets/images/signIn-min.png" alt="SignUpImage"  className='max-w-[18rem] pt-2 object-cover' />
                             </div>
 
                             {/* form section */}
@@ -96,7 +96,11 @@ export const SignIn=()=>{
                                         <span className='px-3'>Or</span>
                                         <span className='border border-gray-600 w-full h-0'></span>
                                     </div>
-                                    <p className='text-sm text-center border border-gray-600 rounded-full py-1 mt-3 cursor-pointer'><FcGoogle className='inline-block text-lg mx-1 mt-[-0.13rem]'/> Continue with Google</p>
+                                    
+                                    <div className='text-center'>
+                                       <button className='text-sm border border-gray-600 rounded-md px-4 py-1 mt-3'><FcGoogle className='inline-block text-lg mx-1 mt-[-0.13rem]'/> Continue with Google</button>
+                                    </div>
+                                    
                                 </form>
 
                                 {success&& <div>{success}</div>}

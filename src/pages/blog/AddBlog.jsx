@@ -1,6 +1,8 @@
 import { BlogForm, ContentContainer, MainContainer } from "../../components"
 
+
 export const AddBlog=()=>{
+    
     return(
         <div className='mt-auto'>
             <MainContainer>

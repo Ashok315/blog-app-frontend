@@ -12,36 +12,35 @@ import { store } from './redux/store'
 
 function App() {
     setupInterceptors(store)
+
   return (
     <>
         <Router>
-          <ScrollToTop history={history}></ScrollToTop>
-          <Header/>
+            <ScrollToTop history={history}></ScrollToTop>
+            <Header/>
 
-          <Routes>
-            <Route path='/' exact element={<Home/>}></Route>
-            <Route path="*"  element={<PageNotFound/>}></Route>
-            <Route path='/blogs' element={<AllBlogs/>}></Route>
-            <Route path='/blogs/search/:searchTerm' element={<SearchBlog/>}></Route>
-            <Route path='/blog/:slug'  element={<BlogDetail/>}></Route>
-            
-            <Route element={<AuthRoutes></AuthRoutes>}>
-                <Route path='/sign_up' element={<SignUp/>}></Route>
-                <Route path='/sign_in' element={<SignIn/>}></Route>
-            </Route>
-           
+            <Routes>             
+                {/* public routes */}
+                <Route path='/' exact element={<Home/>}></Route>
+                <Route path="*"  element={<PageNotFound/>}></Route>
+                <Route path='/blogs' element={<AllBlogs/>}></Route>
+                <Route path='/blogs/search/:searchTerm' element={<SearchBlog/>}></Route>
+                <Route path='/blog/:slug'  element={<BlogDetail/>}></Route> 
+                <Route element={<AuthRoutes></AuthRoutes>}>
+                    <Route path='/sign_up' element={<SignUp/>}></Route>
+                    <Route path='/sign_in' element={<SignIn/>}></Route>
+                </Route>
+                  
+                {/* Protected routes */}
+                <Route element={<PrivateRoutes/>}>
+                    <Route path='/logout'></Route>     
+                    <Route path='/add_blog' element={<AddBlog/>}></Route>
+                    <Route path='/edit_blog/:slug' element={<EditBlog/>}></Route>
+                    <Route path='/profile' element={<Profile/>}></Route>
+                </Route>
+            </Routes>
 
-            <Route element={<PrivateRoutes/>}>
-                <Route path='/logout'></Route>     
-                <Route path='/add_blog' element={<AddBlog/>}></Route>
-                <Route path='/edit_blog/:slug' element={<EditBlog/>}></Route>
-                <Route path='/profile' element={<Profile/>}></Route>
-            </Route>
-            <Route path='/test'  element={<Test/>}></Route>
-            
-          </Routes>
-          <Footer/>
-          
+            <Footer/>  
         </Router>
 
     </>

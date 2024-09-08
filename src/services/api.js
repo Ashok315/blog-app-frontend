@@ -7,13 +7,7 @@ const baseUrl=import.meta.env.VITE_API_BASE_URL;
 
 const api=axios.create({
     baseURL:baseUrl,
-    // headers: {
-    //     'Content-Type': 'multipart/form-data', // Set default content type
-    //     // "Content-Type":"application/json"
-    //   },
 })
-
-
 
 
 export const setupInterceptors=(store)=>{

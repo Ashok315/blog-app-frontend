@@ -7,7 +7,7 @@ export const Button=({
   ...props
 })=>{
   return (
-    <button type={type} className={`rounded-3xl text-sm px-6 py-[0.32rem] ease-in-out duration-300 ${className}`} {...props}>
+    <button type={type} className={`rounded-md text-[0.8rem] px-[1.32rem] py-[0.32rem] font-semibold tracking-[0.03em] ease-in-out duration-300 ${className}`} {...props}>
        {children}
     </button>
   );
