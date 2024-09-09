@@ -13,7 +13,7 @@ export const Home = () => {
   useEffect(()=>{  
       blogService.getBlogs().then((posts)=>{
               if(posts){
-                setBlogs(posts.slice(posts.length-6,posts.length).reverse())
+                setBlogs(posts.slice(posts.length-6, posts.length).reverse())
               }
       })
   },[])
