@@ -62,7 +62,7 @@ export const BlogDetail=()=>{
                 
                 <div className='flex items-center justify-between gap-2 rounded-md'>
                     <div className='flex gap-2 items-center'>
-                        <img src={blog?.author.image} alt="profile-image" className='max-w-[2.3rem] rounded-full' />   
+                        <img src={blog?.author.image} alt="profile-image" className='w-[32px] h-[32px] max-w-[35px] max-h-[35px] rounded-full object-cover' />   
                         <div className='leading-4 cursor-pointer'>
                             <p className='text-gray-600 text-wrap font-semibold text-[0.85rem] capitalize'>{blog.author.firstName+' '+blog.author.lastName}</p>
                             <p className='text-gray-500 text-[0.75rem]'>{formatDate(blog.createdAt)}</p>

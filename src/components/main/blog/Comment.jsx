@@ -46,7 +46,7 @@ export const Comment = ({blog,refresh}) => {
 
             <p>Add a Comment</p>
             <div className='flex gap-2 items-center mt-2'>
-                <img src={blog?.author.image} alt="author_image" className='max-w-[35px] rounded-full' />        
+                <img src={blog?.author.image} alt="author_image" className='w-[32px] h-[32px] max-w-[35px] max-h-[35px] rounded-full object-cover' />        
                 <textarea id='comment' name="comment" value={comment} onChange={(e)=>setComment(e.target.value)} placeholder='Write a comment' rows="1" className='w-full border border-gray-500 p-2 rounded-md'></textarea>
                 <Button onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white rounded-md'>Submit</Button>
 
@@ -59,25 +59,29 @@ export const Comment = ({blog,refresh}) => {
         <hr className='border border-slate-300 my-4'></hr>
    
         {
-          blog?.comments.slice(blog.comments.length-commentList,blog.comments.lenth).reverse().map((item)=>{
+          // blog?.comments.slice(blog.comments.length-commentList, blog.comments.lenth).reverse().map((item)=>{
+          blog?.comments.slice(blog.comments.length>=5?blog.comments.length-commentList:0, blog.comments.length).reverse().map((item)=>{
             if(item.comment){
-                return (
-                    <div key={item._id} className='ml-8 text-xs -mt-1'>
-                        <div className='flex gap-2 items-center mt-3'>
-                            <img src={item.commentedBy.image} alt="author_image" className='max-w-[32px] rounded-full mt-3' />     
-                            <p className='capitalize font-semibold text-gray-700'>{item.commentedBy.firstName+" "+item.commentedBy.lastName}</p>
-                            <p className='text-gray-600'><span className='pr-1.5 font-semibold'>&#x2022;</span>{formatDate(item.commentedBy.createdAt)}</p>
+                return (       
+                         <div key={item._id} className='flex gap-2 mt-[1.1rem] ml-8'>
+                              <div>
+                                 <img src={item.commentedBy.image} alt="author_image" className='w-[32px] h-[32px] max-w-[35px] max-h-[35px] rounded-full object-cover' />     
+                              </div>
+                              <div>
+                                 <div className="flex gap-2 items-center text-xs">
+                                    <p className='capitalize font-semibold text-gray-700'>{item.commentedBy.firstName+" "+item.commentedBy.lastName}</p>
+                                    <p className='text-gray-600'><span className='pr-1.5 font-semibold'>&#x2022;</span>{formatDate(item.commentedBy.createdAt)}</p>
+                                 </div>
+                                 <p className='text-sm'>{item.comment}</p>
+                              </div>
                          </div>
-                         <p className='ml-11 text-sm -mt-2'>{item.comment}</p>
-                    </div>
-                         
                 )        
               }    
           })
         
          }
     
-    <div className={`${commentList===blog.comments.length||blog.comments.length<=5?'hidden':"text-center my-3"} `}>
+    <div className={`${blog.comments.length<=commentList?'hidden':"text-center my-3"} `}>
         <button onClick={()=>setCommentList(blog.comments.length)} className='text-[0.9rem] text-primary'>Show more...</button>
     </div>
 
