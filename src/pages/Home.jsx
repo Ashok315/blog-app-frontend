@@ -14,7 +14,6 @@ export const Home = () => {
   useEffect(()=>{  
       blogService.getLatestBlogs().then((posts)=>{
               if(posts){
-                // setBlogs(posts.slice(posts.length-6, posts.length).reverse())
                 setBlogs(posts);
               }
       })
