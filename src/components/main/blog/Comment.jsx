@@ -59,7 +59,6 @@ export const Comment = ({blog,refresh}) => {
         <hr className='border border-slate-300 my-4'></hr>
    
         {
-          // blog?.comments.slice(blog.comments.length-commentList, blog.comments.lenth).reverse().map((item)=>{
           blog?.comments.slice(blog.comments.length>=5?blog.comments.length-commentList:0, blog.comments.length).reverse().map((item)=>{
             if(item.comment){
                 return (       

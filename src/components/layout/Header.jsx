@@ -10,7 +10,7 @@ import { IoMdArrowDropdown, IoMdLogOut } from 'react-icons/io'
 import { Input } from '../common/Input'
 import {PiUserCircleFill} from 'react-icons/pi'
 import { RiAddCircleFill } from 'react-icons/ri'
-import { ContentContainer } from '../common/ContentContainer'
+import { ContentContainer } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'
 import authService from '../../services/authService'
 import { logout } from '../../redux/authSlice'
@@ -203,14 +203,14 @@ export const Header = () => {
                             <li className='leading-7 mt-1'><Link to="/profile" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Profile</Link></li>
                             <li className='leading-7 mt-1'><Link to="/add_blog" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">Add Blog</Link></li>
                             <li className='leading-7 mt-1'><Link to="/test" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">My Blogs</Link></li>
-                            <li className='leading-7 mt-1'><Link onClick={handleSignOut} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Logout</Link></li>
+                            <li className='leading-7 mt-1'><Link onClick={()=>{handleSignOut(),toggleMenu()}} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Logout</Link></li>
                         </ul>
                       </div>
                   </>
                  
                   :
                     <div>
-                      <Button type='button' onClick={()=>navigate('/sign_in')} className='text-white bg-lightPrimary hover:bg-primary duration-300'>Sign In</Button>
+                      <Button type='button' onClick={()=>{navigate('/sign_in'),toggleMenu()}} className='text-white bg-lightPrimary hover:bg-primary duration-300'>Sign In</Button>
                     </div>
                 }
              

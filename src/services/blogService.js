@@ -14,7 +14,7 @@ const createBlog=async(blogData)=>{
 const getBlogs=async (query='')=>{
    
     try{
-        const response=await api.get(`/blogs/get-blogs${query}`)
+        const response=await api.get(`/blogs/get-blogs${query}`); 
         const posts=response.data.blogs;
         return posts;   
     }
@@ -22,6 +22,33 @@ const getBlogs=async (query='')=>{
       throw new Error(error.message)
     
     }
+}
+
+const getLatestBlogs=async ()=>{
+   
+  try{
+      const response=await api.get(`/blogs/latest-blogs`); 
+      const posts=response.data.blogs;
+      return posts;   
+  }
+  catch(error){
+    throw new Error(error.message)
+  
+  }
+}
+
+
+const getBlogBySlug=async (slug)=>{
+   
+  try{
+      const response=await api.get(`/blogs/get-blog/${slug}`)
+      const post=response.data.blog;
+      return post;   
+  }
+  catch(error){
+    throw new Error(error.message)
+  
+  }
 }
 
 const updateBlog=async(blogId,blogData)=>{
@@ -56,4 +83,4 @@ const addComment=async (blogId,comment)=>{
 }
 
 
-export default {createBlog,getBlogs,updateBlog,likeBlog,addComment}
+export default {createBlog,getBlogs,getBlogBySlug,updateBlog,likeBlog,addComment,getLatestBlogs}

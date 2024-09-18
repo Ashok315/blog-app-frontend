@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import authService from '../../services/authService'
 import {login} from '../../redux/authSlice'
 
-
 export const Profile = () => {
  
   let userData=useSelector(state=>state.auth.user);
@@ -139,32 +138,27 @@ export const Profile = () => {
                     </div>
                 </div>
 
+                <Modal title="Update Profile" isVisible={isModalVisible} closeModal={closeModal} width='max-w-md'>
+                        <form action="#" className='max-w-64 mx-auto'>
+                              <div className='mt-2.5'>
+                                  <Input label="First Name" name="firstName" value={formData.firstName} onChange={handleChange} className="rounded-md mt-1"></Input>
+                              </div>
+                              <div className='mt-2.5'>
+                                  <Input label="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} className="rounded-md"></Input>
+                              </div>
+                          
+                              <div className='mt-2.5'>
+                                  <span className='text-sm'>Email</span>
+                                  <p aria-readonly className='px-2 py-1 rounded-md text-sm border border-lightBorder bg-[#e9e9e9]'>{userData.email}</p>
+                              </div>
 
-
-              <Modal title="Update Profile" isVisible={isModalVisible} closeModal={closeModal} width='max-w-md'>
-                      <form action="#" className='max-w-64 mx-auto'>
-                            <div className='mt-2.5'>
-                                <Input label="First Name" name="firstName" value={formData.firstName} onChange={handleChange} className="rounded-md mt-1"></Input>
-                            </div>
-                            <div className='mt-2.5'>
-                                 <Input label="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} className="rounded-md"></Input>
-                            </div>
-                         
-                            <div className='mt-2.5'>
-                                <span className='text-sm'>Email</span>
-                                <p aria-readonly className='px-2 py-1 rounded-md text-sm border border-lightBorder bg-[#e9e9e9]'>{userData.email}</p>
-                            </div>
-
-                            <div className='text-center mt-5'>
-                                <button onClick={handleSubmit} className='py-1.5 px-[1.2rem] text-sm text-white bg-secondary hover:bg-blue-800 duration-300 rounded-md'>Update</button>
-                            </div>
-                   
-                      </form>
-                      
-              </Modal>
-
-              
+                              <div className='text-center mt-5'>
+                                  <button onClick={handleSubmit} className='py-1.5 px-[1.2rem] text-sm text-white bg-secondary hover:bg-blue-800 duration-300 rounded-md'>Update</button>
+                              </div>
+                    
+                        </form>
                         
+                </Modal>                      
               </ContentContainer>
           </MainContainer>
                       
