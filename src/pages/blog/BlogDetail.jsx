@@ -5,9 +5,9 @@ import { MdDelete } from "react-icons/md"
 import { useNavigate, useParams } from "react-router-dom"
 import blogService from '../../services/blogService'
 import formatDate from '../../utils/formatDate'
-import { PageNotFound } from '../PageNotFound'
 import { useSelector } from 'react-redux'
 import { FaHeart, FaRegCommentDots, FaRegHeart } from 'react-icons/fa6'
+import { NotFound } from '../NotFound'
 
 export const BlogDetail=()=>{
     
@@ -15,7 +15,7 @@ export const BlogDetail=()=>{
     const {slug}=useParams();
     const [likes,setLikes]=useState();
     const [isLiked,setIsLiked]=useState(false);
-    const [refresh,setRefresh]=useState(false);
+    const [refresh,setRefresh]=useState(false); 
 
     const navigate=useNavigate(); 
     let isAuthenticated=useSelector(state=>state.auth.isAuthenticated)
@@ -44,17 +44,17 @@ export const BlogDetail=()=>{
     }
 
     useEffect(()=>{  
-        blogService.getBlogs(`?slug=${slug}`).then((res)=>{
+        
+        blogService.getBlogBySlug(slug).then((res)=>{
             if(res)   {
                 setBlog(res[0]);
                 setLikes(res[0].likes.length);  
-                setIsLiked(res[0].likes.includes(currentUserId));
-               
+                setIsLiked(res[0].likes.includes(currentUserId));       
          }             
         });      
+        
     },[slug,refresh])
 
-  
    return  blog? (  
      <div>
          <MainContainer>
@@ -98,5 +98,5 @@ export const BlogDetail=()=>{
             </ContentContainer>
         </MainContainer>
      </div>
-   ):<PageNotFound></PageNotFound>
+   ):<NotFound/>
 }

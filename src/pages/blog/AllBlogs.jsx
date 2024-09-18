@@ -1,28 +1,27 @@
-import React,{useEffect, useRef, useState} from 'react'
-import { BlogList, Button, ContentContainer, Input, MainContainer } from '../../components'
-import { MdArrowForwardIos } from 'react-icons/md'
-import { HiOutlineChevronLeft } from 'react-icons/hi'
+import React,{lazy, Suspense, useEffect, useRef, useState} from 'react'
+import {ContentContainer, MainContainer } from '../../components'
 import { categories } from '../../data/categories'
 import blogService from '../../services/blogService'
-import { useParams } from 'react-router-dom'
 import { Pagination } from '../../components'
 import { ScrollerList } from '../../components'
 
+const BlogList=lazy(()=>import('../../components').then((module) => ({ default: module.BlogList })));
+
 export const AllBlogs=()=>{
   
-    const [blogs,setBlogs]=useState([]);
-    
-    const postPerPage=6
-    const [currentPage,setCurrentPage]=useState(1);
+        const [blogs,setBlogs]=useState([]);
+        
+        const postPerPage=6
+        const [currentPage,setCurrentPage]=useState(1);
 
-    const indexOfLastPost=currentPage*postPerPage;
-    const indexOfFirstPost=indexOfLastPost-postPerPage;
+        const indexOfLastPost=currentPage*postPerPage;
+        const indexOfFirstPost=indexOfLastPost-postPerPage;
 
-    const paginate=(pageNumber)=>setCurrentPage(pageNumber)
+        const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
-    const [query,setQuery]=useState('');
+        const [query,setQuery]=useState('');
 
-    const changeQuery=(category)=>setQuery(category)
+        const changeQuery=(category)=>setQuery(category)
     
     useEffect(()=>{  
         blogService.getBlogs(query&&`?category=${query}`).then((posts)=>{
@@ -42,10 +41,13 @@ export const AllBlogs=()=>{
            <ScrollerList lists={categories} navigateListItem={changeQuery} activeListItem={query} ></ScrollerList>
     
             <ContentContainer className='mt-11'>
-                <BlogList blogs={blogs.slice(indexOfFirstPost,indexOfLastPost)}></BlogList>
+                <Suspense fallback={<div className='text-center text-lg'>Loading...</div>}>
+                     <BlogList blogs={blogs.slice(indexOfFirstPost,indexOfLastPost)}></BlogList>
+                </Suspense>
                 <Pagination postPerPage={postPerPage} totalPosts={blogs?.length} currentPage={currentPage} paginate={paginate}></Pagination>
             </ContentContainer>   
       
         </MainContainer>
     )
 }
+

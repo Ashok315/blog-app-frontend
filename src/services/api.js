@@ -6,10 +6,10 @@ const baseUrl=import.meta.env.VITE_API_BASE_URL;
 
 
 const api=axios.create({
-    baseURL:baseUrl,
+    baseURL:baseUrl
 })
 
-
+// this is use for the response data or handle errors globally
 export const setupInterceptors=(store)=>{
   api.interceptors.response.use(
     response => response,

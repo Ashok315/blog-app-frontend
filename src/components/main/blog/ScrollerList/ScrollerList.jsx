@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { ContentContainer } from '../../../common/ContentContainer';
+import { ContentContainer } from '../../../../components';
 import { Button } from '../../../common/Button';
 import { HiOutlineChevronLeft } from 'react-icons/hi';
 import { MdArrowForwardIos } from 'react-icons/md';
