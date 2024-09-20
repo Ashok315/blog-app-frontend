@@ -88,10 +88,11 @@ export const Header = () => {
           <div>
             <Link to="/" ><img src={logo} className='max-w-[83px] md:max-w-[92px]' alt="logo" /></Link> 
           </div>
+
           {/* searchBar */}
           <div className='relative text-sm lg:ml-6'>
               <form action="#"  onSubmit={handleSearch}>
-                  <Input placeholder="Search" name="search" value={searchText} onChange={handleChange}  padding="px-4 pr-[2.3rem]" className=""></Input>
+                  <Input placeholder="Search" name="search" value={searchText} onChange={handleChange}  padding="px-4 pr-[2.3rem]"></Input>
                   <BsSearch className='absolute top-2.5 right-4 text-lightBorder'></BsSearch>
                 </form>
           </div>
@@ -149,27 +150,27 @@ export const Header = () => {
   
         {/* Mobile menu bar */}
 
-          <div className={`md:hidden fixed inset-0 z-10 bg-white pt-[1.5rem] px-[0.9rem] ${!isMenuOpen?'hidden':''}` }>
-              <div className='flex justify-between items-center gap-3 mb-3'>
-                {/* logo */}
-                <div>
-                  <Link><img src={logo} className='max-w-[83px] md:max-w-[92px]' alt="logo" /></Link>
-                </div>
+          <div className={`md:hidden fixed inset-0 z-10 bg-white pt-[0.55rem] px-[1rem] ${!isMenuOpen?'hidden':''}` }>
+              <div className='flex justify-between items-center gap-3 mb-3'>    
+                  {/* logo */}
+                  <div>
+                    <Link to="/"><img src={logo} className='max-w-[83px] md:max-w-[92px]' alt="logo" /></Link>
+                  </div>
 
-                {/* searchBar */}
-                <div className='relative text-sm lg:ml-6'>
-                  <form action="#" className='' onSubmit={handleSearch}>
-                    <Input placeholder="Search" name="search" ></Input>
-                    <BsSearch className='absolute top-2 right-4 text-lightBorder'></BsSearch>
-                  </form>
-                </div>
+                  {/* searchBar */}
+                  <div className='relative text-sm lg:ml-6'>
+                    <form action="#" className='' onSubmit={handleSearch}>
+                      <Input placeholder="Search" name="search" value={searchText} onChange={handleChange}  padding="px-4 pr-[2.3rem]" ></Input>
+                      <BsSearch className='absolute top-2.5 right-4 text-lightBorder'></BsSearch>
+                    </form>
+                  </div>
 
-                {/* menu-close-button */}
-                <div className='md:hidden'>
-                  <IoClose className='text-4xl pl-[6p] mr-[3px] border border-gray-400 rounded px-[0.32rem] cursor-pointer hover:bg-gray-200 duration-200' onClick={toggleMenu}/>
-                </div>
-              </div>
-
+                  {/* menu-close-button */}
+                  <div className='md:hidden'>
+                    <IoClose className='text-4xl mr-[2px] border border-gray-400 rounded px-[0.32rem] cursor-pointer hover:bg-gray-200 duration-200' onClick={toggleMenu}/>
+                  </div>
+             </div>
+             
               {/* navLinks */}
               <div className='pb-[0.8rem] mb-[1rem] border-b-2 border-gray-300'>
                   <ul>
@@ -212,8 +213,9 @@ export const Header = () => {
                       <Button type='button' onClick={()=>{navigate('/sign_in'),toggleMenu()}} className='text-white bg-lightPrimary hover:bg-primary duration-300'>Sign In</Button>
                     </div>
                 }
-             
+       
           </div>
+
 
       </nav>
   )
