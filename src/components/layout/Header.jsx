@@ -90,11 +90,10 @@ export const Header = () => {
           </div>
           {/* searchBar */}
           <div className='relative text-sm lg:ml-6'>
-         
-          <form action="#"  onSubmit={handleSearch}>
-              <Input placeholder="Search" name="search" value={searchText} onChange={handleChange}  padding="px-4 pr-[2.3rem]" className=""></Input>
-              <BsSearch className='absolute top-2.5 right-4 text-lightBorder'></BsSearch>
-            </form>
+              <form action="#"  onSubmit={handleSearch}>
+                  <Input placeholder="Search" name="search" value={searchText} onChange={handleChange}  padding="px-4 pr-[2.3rem]" className=""></Input>
+                  <BsSearch className='absolute top-2.5 right-4 text-lightBorder'></BsSearch>
+                </form>
           </div>
          
           {/* navLinks */}

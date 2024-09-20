@@ -1,6 +1,5 @@
 import {Link, useNavigate} from 'react-router-dom'
 import { Button, Input, ContentContainer, MainContainer } from '../../components'
-import { BiKey, BiLock, BiLockOpen, BiUserCircle } from 'react-icons/bi'
 import { CgMail } from 'react-icons/cg'
 import { FcGoogle } from 'react-icons/fc'
 import { BsKey } from 'react-icons/bs'

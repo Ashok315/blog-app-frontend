@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import api from "./api";
+import axios from "axios";
 
 const createBlog=async(blogData)=>{
   try{
@@ -82,5 +83,14 @@ const addComment=async (blogId,comment)=>{
    }
 }
 
+const deleteBlog=async (blogId)=>{
+    try {
+      const response=await api.delete(`/blogs/delete-blog/${blogId}`);
+      return response
+    } catch (error) {
+      throw new Error(error.message)
+    }
+}
 
-export default {createBlog,getBlogs,getBlogBySlug,updateBlog,likeBlog,addComment,getLatestBlogs}
+
+export default {createBlog,getBlogs,getBlogBySlug,updateBlog,likeBlog,addComment,getLatestBlogs,deleteBlog}
