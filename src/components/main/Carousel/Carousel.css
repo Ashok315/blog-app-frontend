@@ -3,13 +3,13 @@
         opacity: 0;
     }
     to {
-        opacity: 0.6;
+        opacity: 0.5;
     }
 }
 
 @keyframes fadeOut {
     from {
-        opacity: 0.6;
+        opacity: 0.5;
     }
     to {
         opacity: 0;
@@ -25,7 +25,7 @@
 }
 
 .carousel-item.active {
-    opacity: 0.6;
+    opacity: 0.5;
     z-index: 2;
     animation: fadeIn 1.2s ease-in-out; /* Apply fade-in when the slide becomes active */
 }

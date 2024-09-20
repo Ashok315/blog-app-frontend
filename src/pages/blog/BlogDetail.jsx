@@ -26,6 +26,17 @@ export const BlogDetail=()=>{
         setRefresh(!refresh)
     }
 
+    const handleDelete=async ()=>{
+        let confirmedByUser=confirm("Are you sure you want to delete blog?");
+        if(confirmedByUser){
+            await blogService.deleteBlog(blog._id).then(()=>{  
+                alert("blog deleted successfully");
+                navigate('/blogs');
+            })
+        }
+    
+    }
+
     const likeToggleBtn=async()=>{
         if(isAuthenticated){
             await blogService.likeBlog(blog._id).then(res=>{
@@ -72,7 +83,7 @@ export const BlogDetail=()=>{
                     {isAuthor&&
                         <div className="d-flex">
                                 <button onClick={()=>navigate(`/edit_blog/${slug}`)} className='text-white bg-blue-600 opacity-90 hover:bg-blue-700 duration-200 rounded-[4px] text-[0.75rem] px-[0.6rem] py-[0.28rem] mr-2'><BiEdit className="inline-block mr-1 mt-[-2px]"></BiEdit>Edit</button>       
-                                <button className='text-white bg-red-600 hover:bg-red-700 duration-200 rounded-[4px] text-[0.75rem] px-[0.6rem] py-[0.28rem]'><MdDelete className="inline-block mr-1 mt-[-2px]"></MdDelete>Delete</button>
+                                <button onClick={handleDelete}  className='text-white bg-red-600 hover:bg-red-700 duration-200 rounded-[4px] text-[0.75rem] px-[0.6rem] py-[0.28rem]'><MdDelete className="inline-block mr-1 mt-[-2px]"></MdDelete>Delete</button>
                         </div>
                     } 
                        

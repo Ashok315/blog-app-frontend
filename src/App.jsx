@@ -47,8 +47,7 @@ function App() {
                     <Route path="*"  element={<NotFound resMsg="Oops! Page not found" />}></Route>
                     
                     {/* Protected routes */}
-                    <Route element={<PrivateRoutes/>}>
-                        <Route path='/logout'></Route>     
+                    <Route element={<PrivateRoutes/>}>  
                         <Route path='/add_blog' element={<AddBlog/>}></Route>
                         <Route path='/edit_blog/:slug' element={<EditBlog/>}></Route>
                         <Route path='/profile' element={<Profile/>}></Route>
