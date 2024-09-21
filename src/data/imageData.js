@@ -1,5 +1,5 @@
 export const imageData=[
-    "/assets/images/slider1-min.jpg",
-    "/assets/images/slider2-min.jpg",
-    "/assets/images/slider3-min.jpg", 
+    "/assets/images/slider1",
+    "/assets/images/slider2",
+    "/assets/images/slider3", 
 ]           
