@@ -46,7 +46,8 @@ export const Carousel = () => {
                 <div className="bg-gray-900 w-full -z-40 carousel-inner relative h-[50vh] md:h-[55vh]">
                   {imageData.map((imagePath, i) => (
                       <img
-                        src={imagePath}
+                        src={`${imagePath}.jpg`}
+                        srcSet={`${imagePath}.webp`}
                         alt="slider"
                         key={imagePath}
                         fetchpriority="high"
