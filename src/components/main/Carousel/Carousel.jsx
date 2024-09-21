@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import { Button } from '../../common/Button';
 import { imageData } from '../../../data/imageData';
 import { BiCircle, BiLeftArrow, BiRightArrow } from 'react-icons/bi';

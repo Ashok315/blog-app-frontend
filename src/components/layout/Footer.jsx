@@ -34,7 +34,7 @@ export const Footer = () => {
         </div>
         
          <hr className='opacity-70'/>
-         <p className='py-3 text-center text-white opacity-60 text-sm'>Copyright <span>&#169;</span> 2024 MyBlog | All rights reserved | Developed by: Ashok Pateliya</p>
+         <p className='p-3 text-center text-white opacity-60 text-sm'>Copyright <span>&#169;</span> 2024 MyBlog | All rights reserved | Developed by: Ashok Pateliya</p>
     </footer>
   )
 }
