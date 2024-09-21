@@ -2,11 +2,12 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import lightLogo from '../../assets/images/lightLogo.svg'
 import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsTwitter, BsTwitterX } from 'react-icons/bs'
+import { ContentContainer } from './ContentContainer'
 
 export const Footer = () => {
   return (
     <footer className='bg-secondary mt-auto'>
-        <div className='flex flex-col gap-5 md:flex-row md:gap-3 justify-evenly items-center px-3  text-slate-200 py-5'>
+        <ContentContainer className='flex flex-col gap-5 md:flex-row md:gap-3 justify-evenly items-center px-3  text-slate-200 py-5'>
             <div className=''>
                     <ul className='flex justify-center'> 
                         <li className='leading-6 mt-1'><Link to="/"  className="block rounded  hover:bg-lightPrimary duration-300 p-1 mx-1"><BsGithub></BsGithub></Link></li>
@@ -31,7 +32,7 @@ export const Footer = () => {
                 <Link to="/" className=''><img src={lightLogo} className='max-w-[83px] md:max-w-[92px] mx-auto' alt="logo" /></Link> 
             </div>
            
-        </div>
+        </ContentContainer>
         
          <hr className='opacity-70'/>
          <p className='p-3 text-center text-white opacity-60 text-sm'>Copyright <span>&#169;</span> 2024 MyBlog | All rights reserved | Developed by: Ashok Pateliya</p>
