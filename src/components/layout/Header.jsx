@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import logo from '../../assets/images/logo.svg'
 import { FaBars, FaRectangleList } from 'react-icons/fa6'
 import { IoClose } from 'react-icons/io5'
-import { Link, useLocation, useNavigate, useNavigation, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate} from 'react-router-dom'
 import { Button } from '../common/Button'
 import { BsSearch } from 'react-icons/bs'
 import { HiOutlineMoon } from 'react-icons/hi'
@@ -86,7 +86,7 @@ export const Header = () => {
         <ContentContainer className='flex gap-3 justify-between items-center'>
           {/* logo */}
           <div>
-            <Link to="/" ><img src={logo} className='max-w-[83px] md:max-w-[92px]' alt="logo" /></Link> 
+            <Link to="/" ><img src={logo} className='w-[90px] h-auto max-w-[85px] md:max-w-[95px]' alt="logo" /></Link> 
           </div>
 
           {/* searchBar */}
@@ -154,7 +154,7 @@ export const Header = () => {
               <div className='flex justify-between items-center gap-3 mb-3'>    
                   {/* logo */}
                   <div>
-                    <Link to="/"><img src={logo} className='max-w-[83px] md:max-w-[92px]' alt="logo" /></Link>
+                    <Link to="/"><img src={logo} className='w-[90px] h-auto max-w-[85px] md:max-w-[95px]' alt="logo" /></Link>
                   </div>
 
                   {/* searchBar */}
