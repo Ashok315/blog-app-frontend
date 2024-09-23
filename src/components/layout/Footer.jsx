@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import lightLogo from '../../assets/images/lightLogo.svg'
-import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsTwitter, BsTwitterX } from 'react-icons/bs'
+import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsTwitterX } from 'react-icons/bs'
 import { ContentContainer } from './ContentContainer'
 
 export const Footer = () => {
   return (
-    <footer className='bg-secondary mt-auto'>
-        <ContentContainer className='flex flex-col gap-5 md:flex-row md:gap-3 justify-evenly items-center px-3 text-slate-200 py-5 border-b border-gray-300'>
+    <footer className='bg-secondary w-full mt-auto min-h-[100px]'>
+        <ContentContainer className='flex flex-col gap-5 md:flex-row md:gap-3 justify-evenly items-center px-3 text-slate-200 py-5'>
            
             {/* social-media links */}
             <div>
@@ -37,6 +37,8 @@ export const Footer = () => {
             </div>
            
         </ContentContainer>
+
+        <hr className='opacity-70'/>    
      
          {/* copyright text */}
          <div className='text-center'>

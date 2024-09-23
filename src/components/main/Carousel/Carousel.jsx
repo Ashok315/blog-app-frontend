@@ -47,13 +47,14 @@ export const Carousel = () => {
                   {imageData.map((imagePath, i) => (
                       <img
                         src={`${imagePath}.jpg`}
-                        srcSet={`${imagePath}.webp`}
+                        srcSet={`${imagePath}.webp 1x, ${imagePath}-small.jpg 340w`}
+                        sizes="(max-width: 340px) 340px"
                         alt="slider"
                         key={imagePath}
                         fetchpriority="high"
                         className={`carousel-item ${imageIndex === i ? 'active' : ''} ${
                             exitingIndex === i ? 'exiting' : ''
-                        } w-full h-full object-cover`} />
+                        } w-full h-full max-h-[55vh]  object-cover`} />
                   ))}
                 </div>
  

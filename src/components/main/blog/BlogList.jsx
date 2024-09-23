@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { BlogCard } from './BlogCard';
-import blogService from '../../../services/blogService';
+import React, { lazy, Suspense } from 'react'
 import formatDate from '../../../utils/formatDate';
 
+const BlogCard=lazy(()=>import('../../../components').then((module) => ({ default: module.BlogCard })));
 
 export const BlogList=({blogs})=> {
 
@@ -12,17 +11,20 @@ export const BlogList=({blogs})=> {
   
          
         {blogs?.map((blog)=>(
-          <BlogCard key={blog._id} 
-                    title={blog.title}
-                    slug={blog.slug}
-                    description={blog.content}
-                    blogImage={blog.feature_image}
-                    authorName={blog.author.firstName+` `+blog.author.lastName}
-                    authorId={blog.author._id}
-                    authorImage={blog.author.image}
-                    createdAt={formatDate(blog.createdAt)} 
-                    category={blog.category}>
-          </BlogCard>
+             <Suspense fallback={<p className='text-lg text-center'>Loading...</p>}>
+                   <BlogCard  key={blog._id} 
+                              title={blog.title}
+                              slug={blog.slug}
+                              description={blog.content}
+                              blogImage={blog.feature_image}
+                              authorName={blog.author.firstName+` `+blog.author.lastName}
+                              authorId={blog.author._id}
+                              authorImage={blog.author.image}
+                              createdAt={formatDate(blog.createdAt)} 
+                              category={blog.category}>
+                   </BlogCard>
+          </Suspense> 
+    
         ))}
 
     </div>
