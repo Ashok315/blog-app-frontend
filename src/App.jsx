@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
-import {Footer, Header, ScrollToTop} from './components';
+import {Header, ScrollToTop} from './components';
 import { Home } from './pages/Home';
 import PrivateRoutes from './utils/PrivateRoutes';
 import AuthRoutes from './utils/AuthRoutes';
@@ -18,6 +18,7 @@ const SignUp=lazy(()=>import('./pages').then((module) => ({ default: module.Sign
 const AddBlog=lazy(()=>import('./pages').then((module) => ({ default: module.AddBlog })));
 const EditBlog=lazy(()=>import('./pages').then((module) => ({ default: module.EditBlog })));
 const Profile=lazy(()=>import('./pages').then((module) => ({ default: module.Profile })));
+const Footer=lazy(()=>import('./components').then((module) => ({ default: module.Footer })));
 
 
 function App() {
@@ -29,8 +30,8 @@ function App() {
     <>
         <Router>
             <ScrollToTop history={history}></ScrollToTop>
+            {/* header */}
             <Header/>
-
             <Suspense fallback={<p className='text-center mt-[5rem]'>loading</p>}>
                 <Routes>  
                     {/* public routes */}
@@ -53,11 +54,11 @@ function App() {
                         <Route path='/edit_blog/:slug' element={<EditBlog/>}></Route>
                         <Route path='/profile' element={<Profile/>}></Route>
                     </Route>
-
                 </Routes>
-            </Suspense>
 
-            <Footer/>  
+                {/* footer */}
+                <Footer/> 
+            </Suspense>     
         </Router>
 
     </>
