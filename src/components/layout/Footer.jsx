@@ -6,7 +6,7 @@ import { ContentContainer } from './ContentContainer'
 
 export const Footer = () => {
   return (
-    <footer className='bg-secondary w-full mt-auto min-h-min'>
+    <footer className='bg-secondary w-full mt-auto'>
         <ContentContainer className='flex flex-col gap-5 md:flex-row md:gap-3 justify-evenly items-center px-3 text-slate-200 py-5'>
            
             {/* social-media links */}
