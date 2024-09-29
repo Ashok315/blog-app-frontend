@@ -1,0 +1,19 @@
+table,th,td{
+    border:solid 1.5px lightGray;
+    text-align:left
+  }
+  th,td{
+    padding:0.28rem 1.5rem;
+    text-wrap:nowrap;
+  }
+  th{
+    color:gray;         
+  }
+
+  table{
+    width:90%;
+  }
+    div:has(>table)::-webkit-scrollbar{
+        display:none
+    }
+  

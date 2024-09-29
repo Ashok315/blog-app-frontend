@@ -6,11 +6,11 @@ import PrivateRoutes from './utils/PrivateRoutes';
 import AuthRoutes from './utils/AuthRoutes';
 import { setupInterceptors } from './services/api';
 import { store } from './redux/store';
-import { CategoryBlogs } from './pages';
 import { NotFound } from './pages/NotFound';
 
 const AllBlogs=lazy(()=>import('./pages').then((module) => ({ default: module.AllBlogs })));
 const AuthorBlogs=lazy(()=>import('./pages').then((module) => ({ default: module.AuthorBlogs })));
+const CategoryBlogs=lazy(()=>import('./pages').then((module) => ({ default: module.CategoryBlogs })));
 const SearchBlog=lazy(()=>import('./pages').then((module) => ({ default: module.SearchBlog })));
 const BlogDetail=lazy(()=>import('./pages').then((module) => ({ default: module.BlogDetail })));
 const SignIn=lazy(()=>import('./pages').then((module) => ({ default: module.SignIn })));
@@ -41,6 +41,7 @@ function App() {
                     <Route path='/blogs/search/:searchTerm' element={<SearchBlog/>}></Route>
                     <Route path='/blog/:slug'  element={<BlogDetail/>}></Route> 
                     <Route element={<AuthRoutes></AuthRoutes>}>
+                          {/* auth routes */}
                         <Route path='/sign_up' element={<SignUp/>}></Route>
                         <Route path='/sign_in' element={<SignIn/>}></Route>
                     </Route>

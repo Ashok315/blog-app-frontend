@@ -11,11 +11,11 @@ export const AllBlogs=()=>{
   
         const [blogs,setBlogs]=useState([]);
         
-        const postPerPage=6
+        let postPerPage=6
         const [currentPage,setCurrentPage]=useState(1);
 
-        const indexOfLastPost=currentPage*postPerPage;
-        const indexOfFirstPost=indexOfLastPost-postPerPage;
+        let indexOfLastPost=currentPage*postPerPage;
+        let indexOfFirstPost=indexOfLastPost-postPerPage;
 
         const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
@@ -23,17 +23,15 @@ export const AllBlogs=()=>{
 
         const changeQuery=(category)=>setQuery(category)
     
-    useEffect(()=>{  
-        blogService.getBlogs(query&&`?category=${query}`).then((posts)=>{
-                if(posts){
-                 setBlogs(posts.slice().reverse())
-                }
-               
-        })
-   
-    },[query])
-
-
+        useEffect(()=>{  
+            blogService.getBlogs(query&&`?category=${query}`).then((posts)=>{
+                    if(posts){
+                    setBlogs(posts.slice().reverse())
+                    }
+                
+            })
+    
+        },[query])
 
     return (
         <MainContainer>

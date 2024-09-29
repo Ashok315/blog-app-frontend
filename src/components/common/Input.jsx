@@ -8,7 +8,9 @@ export const Input = React.forwardRef(({
     ...props
 
 },ref) => {
+
   const id=useId()
+  
   return (
           <>
               {label&&<label htmlFor={id} className='text-sm'>{label}</label>}

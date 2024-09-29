@@ -11,7 +11,7 @@ import { BlogForm } from "./main/blog/BlogForm";
 import { BlogCard } from "./main/blog/BlogCard";
 import { Comment } from "./main/blog/Comment";
 import { Pagination } from "./main/blog/Pagination";
-import {ScrollerList} from "./main/blog/ScrollerList/ScrollerList";
+import {ScrollerList} from "./main/blog/ScrollerList";
 import { Modal } from "./common/Modal";
 import { LazyImage } from "./common/LazyImage";
  

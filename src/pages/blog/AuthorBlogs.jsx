@@ -9,11 +9,11 @@ const BlogList=lazy(()=>import("../../components").then((module)=>({default:modu
 export const AuthorBlogs=()=>{
     const [blogs,setBlogs]=useState([]);
     
-    const postPerPage=6
+    let postPerPage=6
     const [currentPage,setCurrentPage]=useState(1);
 
-    const indexOfLastPost=currentPage*postPerPage;
-    const indexOfFirstPost=indexOfLastPost-postPerPage;
+    let indexOfLastPost=currentPage*postPerPage;
+    let indexOfFirstPost=indexOfLastPost-postPerPage;
 
     const paginate=(pageNumber)=>setCurrentPage(pageNumber);
 

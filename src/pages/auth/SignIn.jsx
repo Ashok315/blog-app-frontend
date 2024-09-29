@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc'
 import { BsKey } from 'react-icons/bs'
 import { useState } from 'react'
 import authService from '../../services/authService'
+import userService from '../../services/userService'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/authSlice'
 
@@ -22,21 +23,20 @@ export const SignIn=()=>{
     const handleChange=(e)=>{
         setFormData((prevData)=>({...prevData,[e.target.name]:e.target.value}))
     }
+
     const handleSubmit=async (e)=>{
         e.preventDefault();
         setLoading(true);
-        // setSuccess(null);
         setError(null);
 
         try{
             const session=await authService.signIn(formData).then(res=>res);
             if(session){
-                 authService.getCurrentUser().then((res)=>{
+                 userService.getCurrentUser().then((res)=>{
                     if(res){
                         dispatch(login(res.data.data)); 
                         navigate("/");                      
-                    }
-                    
+                    }                  
                 });
             }       
            

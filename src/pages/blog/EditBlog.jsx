@@ -6,7 +6,7 @@ import { MainContainer,ContentContainer} from '../../components';
 const BlogForm=lazy(()=>import("../../components").then((module)=>({default:module.BlogForm})));
 
 export const EditBlog = () => {
-    let {slug}=useParams();
+    const {slug}=useParams();
     const [blog,setBlog]=useState(null);
     
     useEffect(()=>{

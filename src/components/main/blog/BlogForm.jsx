@@ -1,8 +1,8 @@
-import React,{useEffect, useRef, useState} from "react";
+import React,{useEffect, useState} from "react";
 import blogService from "../../../services/blogService";
 import { Input } from "../../common/Input";
 import { Button } from "../../common/Button";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import { categories } from "../../../data/categories";
 import { Select } from "../../common/Select";
 
@@ -16,13 +16,12 @@ export const BlogForm=({blog})=>{
     const navigate=useNavigate();
 
     const handleChange=(e)=>{ 
-            setFormData((prevData)=>({...prevData,[e.target.name]:e.target.type==="file"?e.target.files[0]:e.target.value}));   
+        setFormData((prevData)=>({...prevData,[e.target.name]:e.target.type==="file"?e.target.files[0]:e.target.value}));   
     }
     
     useEffect(()=>{
             if(blog){
-                setFormData((prevData)=>({...prevData,title:blog.title,content:blog.content,category:blog.category,visibility:blog.visibility}))
-    
+                setFormData((prevData)=>({...prevData,title:blog.title,content:blog.content,category:blog.category,visibility:blog.visibility})) 
             }
     },[blog])
    
@@ -60,7 +59,6 @@ export const BlogForm=({blog})=>{
     return (
         <div className='max-w-full mx-auto'>
             <form action="#" >
-
                 <div className="flex gap-5 mt-3">
                     <div className='basis-full'>
                         <Input name="title" label="Title" value={formData.title}  onChange={handleChange} placeholder="Title" className="rounded-md"></Input>
@@ -86,7 +84,6 @@ export const BlogForm=({blog})=>{
                 <div className='text-center'>
                     <Button  onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-4 rounded-md'>{blog?"Update":"Submit"}</Button>
                 </div>
-
             </form>   
         
             {success&& <div>{success}</div>}
