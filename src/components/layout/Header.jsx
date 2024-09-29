@@ -18,13 +18,13 @@ import { logout } from '../../redux/authSlice'
 
 export const Header = () => {
 
-  let isAuthenticated=useSelector(state=>state.auth.isAuthenticated);
-  let userData=useSelector(state=>state.auth.user);
+  const isAuthenticated=useSelector(state=>state.auth.isAuthenticated);
+  const userData=useSelector(state=>state.auth.user);
 
   const dispatch=useDispatch();
   const navigate=useNavigate();
 
-  let location=useLocation();
+  const location=useLocation();
   
   const [isMenuOpen,setIsMenuOpen]=useState(false);
   const [isProfileTabOpen,setIsProfileTabOpen]=useState(false);
@@ -42,7 +42,7 @@ export const Header = () => {
         setIsProfileTabOpen(!isProfileTabOpen);
   }
 
-  //handleSignOut
+  //handle signout
   const handleSignOut=()=>{
           authService.logout().then(()=>{
             dispatch(logout());
@@ -51,20 +51,18 @@ export const Header = () => {
       
   }
 
-  //handleChange
+  //handle when search value change
   const handleChange=(e)=>{
     setSearchText(e.target.value)
   }
 
-  //handleSearch
+  //handle search bar
   const handleSearch=(e)=>{
       e.preventDefault();
-      if(searchText) navigate(`/blogs/search/${searchText}`)   
-     
+      if(searchText) navigate(`/blogs/search/${searchText}`)     
   }
 
   useEffect(()=>{
-
         function handleClickOutside(event) {
             if (profileMenuRef.current && !profileMenuRef.current.contains(event.target)) {
               setIsProfileTabOpen(false);
@@ -76,7 +74,7 @@ export const Header = () => {
           setSearchText('');
         }
 
-          // handleClickOutside()
+          // handle click outside()
           document.addEventListener('mousedown',handleClickOutside);
           return ()=>document.removeEventListener('mousedown',handleClickOutside)
   },[location])
@@ -184,6 +182,7 @@ export const Header = () => {
               {isAuthenticated?
                  <>
                       <div className='flex justify-between items-center'>
+                          {/* user-detail */}
                           <div className='flex items-center gap-2 rounded-md py-1'>
                               <img src={userData?.image} alt="profile-image" className='w-[35px] h-[35px] max-w-[40px] max-h-[40px] rounded-full object-cover' />   
                               <div className='leading-4'>
@@ -198,6 +197,7 @@ export const Header = () => {
                           </div>
                       </div>
 
+                      {/* profile navigations */}
                       <div className='mt-2'>
                         <ul> 
                             <li className='leading-7 mt-1'><Link to="/profile" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Profile</Link></li>
@@ -209,6 +209,7 @@ export const Header = () => {
                   </>
                  
                   :
+                  // login-button
                     <div>
                       <Button type='button' onClick={()=>{navigate('/sign_in'),toggleMenu()}} className='text-white bg-lightPrimary hover:bg-primary duration-300'>Sign In</Button>
                     </div>

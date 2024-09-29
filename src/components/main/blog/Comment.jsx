@@ -1,4 +1,4 @@
-import React, {useEffect, useState } from 'react'
+import React, {useState } from 'react'
 import blogService from '../../../services/blogService';
 import { Button } from '../../common/Button';
 import formatDate from '../../../utils/formatDate';
@@ -43,7 +43,6 @@ export const Comment = ({blog,refresh}) => {
   return (
     <>
         <div className='mt-6'>
-
             <p>Add a Comment</p>
             <div className='flex gap-2 items-center mt-2'>
                 <img src={blog?.author.image} alt="author_image" className='w-[32px] h-[32px] max-w-[35px] max-h-[35px] rounded-full object-cover' />        
@@ -51,13 +50,11 @@ export const Comment = ({blog,refresh}) => {
                 <Button onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white rounded-md'>Submit</Button>
 
             </div>
-      
         </div>
 
-        <p className='mt-5 -mb-2'>Comments</p>
-        
-        <hr className='border border-slate-300 my-4'></hr>
-   
+        {/*all comments  */}
+        <p className='mt-5 -mb-2'>Comments</p>       
+        <hr className='border border-slate-300 my-4'></hr>   
         {
           blog?.comments.slice(blog.comments.length>=5?blog.comments.length-commentList:0, blog.comments.length).reverse().map((item)=>{
             if(item.comment){

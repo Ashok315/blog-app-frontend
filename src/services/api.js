@@ -4,7 +4,6 @@ import { logout } from "../redux/authSlice";
 axios.defaults.withCredentials=true
 const baseUrl=import.meta.env.VITE_API_BASE_URL;
 
-
 const api=axios.create({
     baseURL:baseUrl
 })
@@ -29,8 +28,6 @@ export const setupInterceptors=(store)=>{
     }
   );
 }
-
-
 
 
 export default api;

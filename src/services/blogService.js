@@ -1,7 +1,6 @@
-import { useParams } from "react-router-dom";
 import api from "./api";
-import axios from "axios";
 
+// create blog 
 const createBlog=async(blogData)=>{
   try{
     const response=await api.post('/blogs/create-blog',blogData);
@@ -12,6 +11,7 @@ const createBlog=async(blogData)=>{
   }
 }
 
+// get blogs 
 const getBlogs=async (query='')=>{
    
     try{
@@ -25,6 +25,7 @@ const getBlogs=async (query='')=>{
     }
 }
 
+// get latest blogs 
 const getLatestBlogs=async ()=>{
    
   try{
@@ -38,7 +39,7 @@ const getLatestBlogs=async ()=>{
   }
 }
 
-
+// get blog by slug 
 const getBlogBySlug=async (slug)=>{
    
   try{
@@ -52,6 +53,7 @@ const getBlogBySlug=async (slug)=>{
   }
 }
 
+// update blog 
 const updateBlog=async(blogId,blogData)=>{
   try{
        const response=await api.patch(`/blogs/update-blog/${blogId}`,blogData);
@@ -62,6 +64,7 @@ const updateBlog=async(blogId,blogData)=>{
   }
 }
 
+// like blog post
 const likeBlog=async (blogId)=>{
   try{
       const response=await api.patch(`/blogs/${blogId}/like`);
@@ -73,6 +76,7 @@ const likeBlog=async (blogId)=>{
   }
 }
 
+// add comment on blog post
 const addComment=async (blogId,comment)=>{
    try{
        const response=await api.patch(`/blogs/${blogId}/comment`,comment);
@@ -83,6 +87,7 @@ const addComment=async (blogId,comment)=>{
    }
 }
 
+// delete blog
 const deleteBlog=async (blogId)=>{
     try {
       const response=await api.delete(`/blogs/delete-blog/${blogId}`);

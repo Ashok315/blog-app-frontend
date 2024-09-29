@@ -18,8 +18,8 @@ export const BlogDetail=()=>{
     const [refresh,setRefresh]=useState(false); 
 
     const navigate=useNavigate(); 
-    let isAuthenticated=useSelector(state=>state.auth.isAuthenticated)
-    let currentUserId=useSelector(state=>state.auth.user?._id);
+    const isAuthenticated=useSelector(state=>state.auth.isAuthenticated)
+    const currentUserId=useSelector(state=>state.auth.user?._id);
     let isAuthor=blog&&currentUserId?blog.author._id===currentUserId:false;
 
     const refreshToggle=()=>{

@@ -18,32 +18,32 @@ export const SignUp=()=>{
     const navigate=useNavigate()
 
 
-const handleChange=(e)=>{ 
-   setFormData((prevData)=>({...prevData,[e.target.name]:e.target.value}))
-}
-
-
-const handleSubmit=async (e)=>{
-    e.preventDefault();
-    setLoading(true);
-    setError(null);
-    setSuccess(null);
-
-    try{
-        const response=await authService.signUp(formData)
-        // .then((res)=>res);
-        if(response){
-            setSuccess('Registration successful!');
-            navigate('/sign_in')
-        }
-        console.log(response)  
-    
-    }catch(err){
-        setError(err.message || 'An error occurred during registration.');
-    } finally {
-      setLoading(false);
+    const handleChange=(e)=>{ 
+    setFormData((prevData)=>({...prevData,[e.target.name]:e.target.value}))
     }
-}
+
+
+    const handleSubmit=async (e)=>{
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+        setSuccess(null);
+
+        try{
+            const response=await authService.signUp(formData)
+            // .then((res)=>res);
+            if(response){
+                setSuccess('Registration successful!');
+                navigate('/sign_in')
+            }
+            console.log(response)  
+        
+        }catch(err){
+            setError(err.message || 'An error occurred during registration.');
+        } finally {
+        setLoading(false);
+        }
+    }
 
   return (
         <div className='mt-auto'>

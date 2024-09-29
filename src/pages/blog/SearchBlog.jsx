@@ -1,4 +1,4 @@
-import React,{lazy, Suspense, useEffect, useRef, useState} from 'react'
+import React,{lazy, Suspense, useEffect, useState} from 'react'
 import {ContentContainer, MainContainer, Pagination } from '../../components'
 import blogService from '../../services/blogService'
 import {useParams } from 'react-router-dom'
@@ -9,11 +9,11 @@ export const SearchBlog = () => {
 
     const [blogs,setBlogs]=useState([]);
 
-    const postPerPage=6
+    let postPerPage=6
     const [currentPage,setCurrentPage]=useState(1);
 
-    const indexOfLastPost=currentPage*postPerPage;
-    const indexOfFirstPost=indexOfLastPost-postPerPage;
+    let indexOfLastPost=currentPage*postPerPage;
+    let indexOfFirstPost=indexOfLastPost-postPerPage;
 
     const paginate=(pageNumber)=>setCurrentPage(pageNumber)
 
