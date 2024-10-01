@@ -124,7 +124,7 @@ export const Header = () => {
                       <ul className='text-sm text-justify'> 
                           <li className='leading-6'><Link to="/profile" onClick={toggleMenu} className="block hover:text-black hover:bg-gray-200 duration-300 px-3 py-1"><PiUserCircleFill className='text-[0.9rem] inline mr-2 mb-[2px]'/>Profile</Link></li>
                           <li className='leading-6'><Link to="/add_blog" onClick={toggleMenu} className="block  hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1"><RiAddCircleFill className='text-[0.9rem] inline mr-2 mb-[2px]'/>Add Blog</Link></li>
-                          <li className='leading-6'><Link to="/test" onClick={toggleMenu} className="block  hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1"><FaRectangleList className='text-[0.9rem] inline mr-2 mb-[2px]'/>My Blogs</Link></li>
+                          <li className='leading-6'><Link to={`/blogs/author/${userData?._id}`} onClick={toggleMenu} className="block  hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1"><FaRectangleList className='text-[0.9rem] inline mr-2 mb-[2px]'/>My Blogs</Link></li>
                           <li className='leading-6'><Link onClick={handleSignOut} className="block  hover:text-black hover:bg-gray-200 duration-300 px-3 py-1"><IoMdLogOut className='text-[0.9rem] inline mr-2 mb-[2px]' />Logout</Link></li>
                       </ul>
                   </div>
@@ -202,7 +202,7 @@ export const Header = () => {
                         <ul> 
                             <li className='leading-7 mt-1'><Link to="/profile" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Profile</Link></li>
                             <li className='leading-7 mt-1'><Link to="/add_blog" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">Add Blog</Link></li>
-                            <li className='leading-7 mt-1'><Link to="/test" onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">My Blogs</Link></li>
+                            <li className='leading-7 mt-1'><Link to={`/blogs/author/${userData?._id}`} onClick={toggleMenu} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duraton-300 px-3 py-1">My Blogs</Link></li>
                             <li className='leading-7 mt-1'><Link onClick={()=>{handleSignOut(),toggleMenu()}} className="block border-l-2 border-transparent rounded hover:border-primary hover:text-black hover:bg-gray-200 duration-300 px-3 py-1">Logout</Link></li>
                         </ul>
                       </div>

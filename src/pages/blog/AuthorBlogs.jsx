@@ -1,5 +1,5 @@
 import React,{lazy, Suspense, useEffect, useState} from 'react'
-import {ContentContainer, MainContainer, Pagination } from '../../components'
+import {ContentContainer, Loading, MainContainer, Pagination } from '../../components'
 import blogService from '../../services/blogService'
 import { useParams } from 'react-router-dom';
 import { NotFound } from '../../pages';
@@ -35,7 +35,7 @@ export const AuthorBlogs=()=>{
                     
                     <ContentContainer className='mt-6'> 
 
-                    <Suspense fallback={<div className='text-center text-lg'>Loading...</div>}>
+                    <Suspense fallback={<Loading></Loading>}>
                         <BlogList blogs={blogs.slice(indexOfFirstPost,indexOfLastPost)} ></BlogList>  
                     </Suspense>
                     {/* pagination */}

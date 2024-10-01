@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
+import { lazy, Suspense, useEffect,useState} from 'react';
+import { BrowserRouter as Router, Route,Routes, useNavigation} from 'react-router-dom';
 import {Header, ScrollToTop} from './components';
 import { Home } from './pages/Home';
 import PrivateRoutes from './utils/PrivateRoutes';
@@ -7,6 +7,8 @@ import AuthRoutes from './utils/AuthRoutes';
 import { setupInterceptors } from './services/api';
 import { store } from './redux/store';
 import { NotFound } from './pages/NotFound';
+import api from './services/api';
+import { Loading } from './components';
 
 const AllBlogs=lazy(()=>import('./pages').then((module) => ({ default: module.AllBlogs })));
 const AuthorBlogs=lazy(()=>import('./pages').then((module) => ({ default: module.AuthorBlogs })));
@@ -22,17 +24,24 @@ const Footer=lazy(()=>import('./components').then((module) => ({ default: module
 
 
 function App() {
+  const [loading,setLoading]=useState(false);
+  
+  const loadingShow=(show)=>setLoading(show);
 
   // calling this method before submit request
-    setupInterceptors(store)
+    setupInterceptors(store,loadingShow);
+
 
   return (
     <>
         <Router>
+
+            <Loading show={loading}></Loading>
+
             <ScrollToTop history={history}></ScrollToTop>
             {/* header */}
             <Header/>
-            <Suspense fallback={<p className='text-center mt-[5rem]'>loading</p>}>
+            <Suspense fallback={<Loading></Loading>}>
                 <Routes>  
                     {/* public routes */}
                     <Route path='/' exact element={<Home/>}></Route>   

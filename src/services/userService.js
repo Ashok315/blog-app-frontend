@@ -28,7 +28,7 @@ const updateProfileImage=async (userId,file,progressStatus)=>{
        const response=await api.patch(`/users/updateProfileImage/${userId}`,file,{
         onUploadProgress:(data)=>{
              progressStatus(Math.round((data.loaded*100)/data.total))
-        }
+        },
        })
        return response;
     }

@@ -1,5 +1,5 @@
 import React,{lazy, Suspense, useEffect, useRef, useState} from 'react'
-import {ContentContainer, MainContainer } from '../../components'
+import {ContentContainer, Loading, MainContainer } from '../../components'
 import { categories } from '../../data/categories'
 import blogService from '../../services/blogService'
 import { Pagination } from '../../components'
@@ -21,25 +21,23 @@ export const AllBlogs=()=>{
 
         const [query,setQuery]=useState('');
 
-        const changeQuery=(category)=>setQuery(category)
+        const changeQuery=(category)=>setQuery(category);
     
         useEffect(()=>{  
             blogService.getBlogs(query&&`?category=${query}`).then((posts)=>{
                     if(posts){
-                    setBlogs(posts.slice().reverse())
+                        setBlogs(posts.reverse());
+                        setCurrentPage(1);
                     }
                 
             })
-    
         },[query])
 
     return (
-        <MainContainer>
-       
+        <MainContainer>     
            <ScrollerList lists={categories} navigateListItem={changeQuery} activeListItem={query} ></ScrollerList>
-    
             <ContentContainer className='mt-11'>
-                <Suspense fallback={<div className='text-center text-lg'>Loading...</div>}>
+                <Suspense fallback={<Loading></Loading>}>
                      <BlogList blogs={blogs.slice(indexOfFirstPost,indexOfLastPost)}></BlogList>
                 </Suspense>
                 <Pagination postPerPage={postPerPage} totalPosts={blogs?.length} currentPage={currentPage} paginate={paginate}></Pagination>
