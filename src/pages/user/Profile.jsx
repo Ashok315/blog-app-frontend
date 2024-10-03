@@ -37,7 +37,7 @@ export const Profile = () => {
 
         if(localImagePath){
             try{         
-                await userService.updateProfileImage(userData._id, profileImage, updateProgressStatus)
+                await userService.updateProfileImage(userData._id, profileImage, updateProgressStatus,{ showSpinner: false })
                           .then((res)=>{
                               dispatch(login(res.data.updatedUser))
                               setUploadProgress('')

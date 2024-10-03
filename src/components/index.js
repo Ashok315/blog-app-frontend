@@ -1,3 +1,4 @@
+import { Loading } from "./layout/Loading";
 import { Button } from "./common/Button";
 import { Input } from "./common/Input";
 import { Header } from "./layout/Header";
@@ -14,5 +15,5 @@ import { Pagination } from "./main/blog/Pagination";
 import {ScrollerList} from "./main/blog/ScrollerList";
 import { Modal } from "./common/Modal";
 import { LazyImage } from "./common/LazyImage";
- 
-export {Button,Input,Header,Carousel,BlogList,Footer,ContentContainer,ScrollToTop,MainContainer,BlogForm,BlogCard,Comment,Pagination,ScrollerList,Modal,LazyImage}
+
+export {Loading,Button,Input,Header,Carousel,BlogList,Footer,ContentContainer,ScrollToTop,MainContainer,BlogForm,BlogCard,Comment,Pagination,ScrollerList,Modal,LazyImage}

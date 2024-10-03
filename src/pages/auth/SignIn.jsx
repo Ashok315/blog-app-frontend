@@ -83,7 +83,7 @@ export const SignIn=()=>{
                                     
                                 
                                     <div className='text-center'>
-                                        <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-5'>Sign In</Button>
+                                        <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-5'>{loading?"Loading...":"Sign In"}</Button>
                                     </div>
                                     
                                 

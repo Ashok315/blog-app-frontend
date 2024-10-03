@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Suspense, lazy } from 'react'
-import { Button, Carousel } from '../components';
+import { Button, Carousel, Loading } from '../components';
 import { BiRightArrowCircle } from 'react-icons/bi';
 import blogService from '../services/blogService';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,7 @@ export const Home = () => {
                 setBlogs(posts);
               }
       })
+   
   },[])
  
   return (
@@ -24,7 +25,7 @@ export const Home = () => {
       <Carousel></Carousel>
       <h1 className='text-center text-[1.2rem] md:text-[1.25rem] mt-6 mb-3'>Latest Blogs</h1>
       
-      <Suspense fallback={<p className='text-lg text-center'>Loading...</p>}>
+      <Suspense fallback={<Loading></Loading>}>
          <BlogList blogs={blogs}></BlogList>
       </Suspense> 
 
