@@ -8,17 +8,40 @@ import authService from '../../services/authService'
 import userService from '../../services/userService'
 import { useDispatch } from 'react-redux'
 import { login } from '../../redux/authSlice'
+import { toast } from 'react-toastify'
 
 export const SignIn=()=>{
 
     const [formData,setFormData]=useState({email:"",password:""})
-
-    const [loading,setLoading]=useState(false)
-    const [success,setSuccess]=useState(null)
-    const [error,setError]=useState(null)
     
     const navigate=useNavigate();
     const dispatch=useDispatch();
+
+    const [errors, setErrors]=useState();
+    
+    // validate email
+    const validateEmail=(email)=>{
+        const regExp=/^[a-zA-Z0-9_.+\-]+[\x40][a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/;
+        return regExp.test(email);
+    }
+
+    // validate form data
+    const validateForm=()=>{
+       let newErrors={}
+
+       if(validateEmail(!formData.email||!formData.email.trim())){
+         newErrors.email="Email is Required"
+       }else if(!validateEmail(formData.email)){
+          newErrors.email="Invalid email format"
+       }
+
+       if(!formData.password || !formData.password.trim()){
+          newErrors.password="Password is required"
+       }
+
+       setErrors(newErrors);
+       return Object.keys(newErrors).length===0;
+    }
 
     const handleChange=(e)=>{
         setFormData((prevData)=>({...prevData,[e.target.name]:e.target.value}))
@@ -26,29 +49,27 @@ export const SignIn=()=>{
 
     const handleSubmit=async (e)=>{
         e.preventDefault();
-        setLoading(true);
-        setError(null);
-
-        try{
-            const session=await authService.signIn(formData).then(res=>res);
-            if(session){
-                 userService.getCurrentUser().then((res)=>{
-                    if(res){
-                        dispatch(login(res.data.data)); 
-                        navigate("/");                      
-                    }                  
-                });
-            }       
-           
+      
+        const isValid=validateForm();
+        
+        if(isValid){
+            try{
+                const session=await authService.signIn(formData);
+                if(session){
+                    toast.success(session.data.message);
+                    userService.getCurrentUser().then((res)=>{
+                        if(res){
+                            dispatch(login(res.data.data)); 
+                            navigate("/");                      
+                        }                  
+                    });
+                }       
+            
+            }
+            catch(error){
+            toast.error(error.message||"An error occurred during sign in")
+            }
         }
-        catch(error){
-           setError(error.message||"An error occurred during sign in")
-        }
-        finally{
-            setLoading(false);
-        }
-   
-
     }
 
     return (
@@ -67,14 +88,22 @@ export const SignIn=()=>{
                                 <h1 className='text-[1.2rem] font-semibold text-center mb-3'>Sign In</h1>
                                 <form action="#" className=''>
 
-                                    <div className='relative mt-3'>
-                                        <Input  name="email" value={formData.email} onChange={handleChange}  placeholder="Email" padding="px-[2.6rem] pr-5"></Input>
-                                        <span className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><CgMail></CgMail></span>
+                                    <div>
+                                        <div className='relative mt-3'>
+                                            <Input  name="email" value={formData.email} onChange={handleChange}  placeholder="Email" padding="px-[2.6rem] pr-5" className={`${errors?.email&&'border-[1.5px] border-red-500'}`}></Input>
+                                            <div className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><CgMail></CgMail></div>      
+                                        </div>
+                                        {errors?.email&&<div className='text text-red-500 -mb-1'>{errors.email}</div>}
                                     </div>
-                                    <div className='relative mt-3'>
-                                        <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Password" padding="px-[2.6rem] pr-5"></Input>
-                                        <span className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><BsKey className='rotate-[145deg]'></BsKey></span>
+
+                                    <div> 
+                                        <div className='relative mt-3'>
+                                            <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Password" padding="px-[2.6rem] pr-5" className={`${errors?.password&&'border-[1.5px] border-red-500'}`}></Input>
+                                            <div className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><BsKey className='rotate-[145deg]'></BsKey></div>
+                                        </div>
+                                        {errors?.password&&<div className='text text-red-500'>{errors.password}</div>}
                                     </div>
+                                   
 
                                     {/* <div className='relative mt-3'>
                                         <Input name='test' value={formData.test} onChange={handleChange} className='border border-red-800 peer' type="text" />
@@ -83,7 +112,7 @@ export const SignIn=()=>{
                                     
                                 
                                     <div className='text-center'>
-                                        <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-5'>{loading?"Loading...":"Sign In"}</Button>
+                                        <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-5'>Sign In</Button>
                                     </div>
                                     
                                 
@@ -102,8 +131,12 @@ export const SignIn=()=>{
                                     
                                 </form>
 
-                                {success&& <div>{success}</div>}
-                                {error&& <div>{error}</div>}
+                                {/* {success&& <div>{success}</div>}
+                                {error&& <div>{error}</div>} */}
+                                {/* {success&& <div>{toast.success(success)}</div>}
+                                {error&& <div>{toast.error(error)}</div>} */}
+                                {/* {toast.error(error)} */}
+
                             </div>
                         </div>
                     </ContentContainer>

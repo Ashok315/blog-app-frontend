@@ -16,7 +16,7 @@ const signUp=async (formData)=>{
 // signIn 
 const signIn=async (formData)=>{
     try{
-       const response=await api.post('/users/sign_in',formData)
+       const response=await api.post('/users/sign_in',formData,{showLoading:false})
        return response;
     }
     catch(error){
