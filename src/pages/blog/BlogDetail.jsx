@@ -8,6 +8,7 @@ import formatDate from '../../utils/formatDate'
 import { useSelector } from 'react-redux'
 import { FaHeart, FaRegCommentDots, FaRegHeart } from 'react-icons/fa6'
 import { NotFound } from '../NotFound'
+import { toast } from 'react-toastify'
 
 export const BlogDetail=()=>{
     
@@ -29,8 +30,8 @@ export const BlogDetail=()=>{
     const handleDelete=async ()=>{
         let confirmedByUser=confirm("Are you sure you want to delete blog?");
         if(confirmedByUser){
-            await blogService.deleteBlog(blog._id).then(()=>{  
-                alert("blog deleted successfully");
+            await blogService.deleteBlog(blog._id).then((res)=>{  
+                toast.success(res.data.message)
                 navigate('/blogs');
             })
         }

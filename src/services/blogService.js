@@ -67,7 +67,7 @@ const updateBlog=async(blogId,blogData)=>{
 // like blog post
 const likeBlog=async (blogId)=>{
   try{
-      const response=await api.patch(`/blogs/${blogId}/like`);
+      const response=await api.patch(`/blogs/${blogId}/like`, {showLoading:false});
       return response;
  
   }

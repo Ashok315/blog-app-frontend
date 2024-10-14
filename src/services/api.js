@@ -8,32 +8,32 @@ const api=axios.create({
     baseURL:baseUrl
 })
 
+
 // this is use for the response data or handle errors globally
 export const setupInterceptors=(store,loading)=>{
- 
-  //request interceptor 
   api.interceptors.request.use(
     (config)=>{
-        loading(true);
+      if (config.showLoading!==null) {
+            loading(false);
+       } 
+       else{
+        loading(true)
+       }
         return config
     },
     (error)=>{
         loading(false);
         return Promise.reject(error)
     })
- 
-  //response interceptor 
+
   api.interceptors.response.use(
-    // response => response,
     response=>{
         loading(false);
         return response;
     },
     error => {
-      // Handle error
         if (error.response) {  
             loading(false);
-          // Request made and server responded
              if(error.response && error.response.status===401){ 
                store.dispatch(logout())
                window.location.href = '/sign_in';         
