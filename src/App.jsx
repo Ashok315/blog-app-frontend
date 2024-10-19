@@ -7,8 +7,8 @@ import AuthRoutes from './utils/AuthRoutes';
 import { setupInterceptors } from './services/api';
 import { store } from './redux/store';
 import { NotFound } from './pages/NotFound';
-import api from './services/api';
 import { Loading } from './components';
+import { ForgotPassword, ResetPassword } from './pages';
 
 const AllBlogs=lazy(()=>import('./pages').then((module) => ({ default: module.AllBlogs })));
 const AuthorBlogs=lazy(()=>import('./pages').then((module) => ({ default: module.AuthorBlogs })));
@@ -50,11 +50,16 @@ function App() {
                     <Route path='/blogs/:category' element={<CategoryBlogs/>}></Route>
                     <Route path='/blogs/search/:searchTerm' element={<SearchBlog/>}></Route>
                     <Route path='/blog/:slug'  element={<BlogDetail/>}></Route> 
+                  
                     <Route element={<AuthRoutes></AuthRoutes>}>
                           {/* auth routes */}
                         <Route path='/sign_up' element={<SignUp/>}></Route>
                         <Route path='/sign_in' element={<SignIn/>}></Route>
+                        <Route path='/forgot_password' element={<ForgotPassword/>}></Route>
+                        <Route path='/reset_password/:token' element={<ResetPassword/>}></Route>
                     </Route>
+
+
                     <Route path="*"  element={<NotFound resMsg="Oops! Page not found" />}></Route>
                     
                     {/* Protected routes */}

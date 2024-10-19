@@ -14,6 +14,7 @@ import { ContentContainer } from '../../components'
 import { useDispatch, useSelector } from 'react-redux'
 import authService from '../../services/authService'
 import { logout } from '../../redux/authSlice'
+import { toast } from 'react-toastify'
 
 
 export const Header = () => {
@@ -47,8 +48,8 @@ export const Header = () => {
           authService.logout().then(()=>{
             dispatch(logout());
             navigate("/sign_in");   
-       })
-      
+            toast.success('Logged out successfully!')
+       })     
   }
 
   //handle when search value change

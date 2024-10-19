@@ -2,11 +2,9 @@ import {Link, useNavigate} from 'react-router-dom'
 import { Button, Input, ContentContainer, MainContainer } from '../../components'
 import { BiLock, BiLockOpen, BiUserCircle } from 'react-icons/bi'
 import { CgMail } from 'react-icons/cg'
-import { FcGoogle } from 'react-icons/fc'
 import { useRef, useState } from 'react'
 import authService from '../../services/authService'
 import { toast } from 'react-toastify'
-
 
 export const SignUp=()=>{
    
@@ -86,7 +84,7 @@ export const SignUp=()=>{
                         </div>
 
                         {/* form section */}
-                        <div className='max-w-full mx-auto'>
+                        <div className='max-w-full mx-auto px-[2rem]'>
                             <h1 className='text-[1.2rem] font-semibold text-center mb-3'>Sign Up</h1>
                             <form action="" className=''>
 
@@ -124,7 +122,7 @@ export const SignUp=()=>{
                                
                                 <div>
                                     <div className='relative mt-2.5'>
-                                        <Input ref={confirmPasswordRef} name="confirmPassword" placeholder="Confirm Password" padding="px-[2.6rem] pr-5" className={`${errors?.confirmPassword&&'border-[1.5px] border-red-500'}`}></Input>
+                                        <Input ref={confirmPasswordRef} type="password" name="confirmPassword" placeholder="Confirm Password" padding="px-[2.6rem] pr-5" className={`${errors?.confirmPassword&&'border-[1.5px] border-red-500'}`}></Input>
                                         <span className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><BiLock></BiLock></span>
                                     </div>
                                     {errors?.confirmPassword&&<div className='text text-red-500 -mb-1'>{errors.confirmPassword}</div>}
@@ -135,16 +133,7 @@ export const SignUp=()=>{
                                 </div>
 
                                 <p className='mt-5 text-sm text-center'>Already have an account ?<Link to="/sign_in" className='text-secondary ml-1 font-semibold tracking-[0.15px]'>Sign In</Link></p>
-                                
-                                <div className='mt-3 flex items-center max-w-full mx-auto  justify-center'>
-                                    <span className='border border-gray-600 w-full h-0'></span>
-                                    <span className='px-3'>Or</span>
-                                    <span className='border border-gray-600 w-full h-0'></span>
-                                </div>
-
-                                <div className='text-center'>
-                                    <button className='text-sm border border-gray-600 rounded-md px-4 py-1 mt-3'><FcGoogle className='inline-block text-lg mx-1 mt-[-0.13rem]'/> Continue with Google</button>
-                                </div>
+                     
                             </form>
              
                         </div>

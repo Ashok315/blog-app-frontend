@@ -1,14 +1,14 @@
-import {Link, useNavigate} from 'react-router-dom'
-import { Button, Input, ContentContainer, MainContainer } from '../../components'
-import { CgMail } from 'react-icons/cg'
-import { FcGoogle } from 'react-icons/fc'
-import { BsKey } from 'react-icons/bs'
-import { useState } from 'react'
-import authService from '../../services/authService'
-import userService from '../../services/userService'
-import { useDispatch } from 'react-redux'
-import { login } from '../../redux/authSlice'
-import { toast } from 'react-toastify'
+import {Link, useNavigate} from 'react-router-dom';
+import { Button, Input, ContentContainer, MainContainer } from '../../components';
+import { CgMail } from 'react-icons/cg';
+import { BsKey } from 'react-icons/bs';
+import { useState } from 'react';
+import authService from '../../services/authService';
+import userService from '../../services/userService';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
+import { login } from '../../redux/authSlice';
+
 
 export const SignIn=()=>{
 
@@ -29,7 +29,7 @@ export const SignIn=()=>{
     const validateForm=()=>{
        let newErrors={}
 
-       if(validateEmail(!formData.email||!formData.email.trim())){
+       if(!formData.email||!formData.email.trim()){
          newErrors.email="Email is Required"
        }else if(!validateEmail(formData.email)){
           newErrors.email="Invalid email format"
@@ -67,7 +67,7 @@ export const SignIn=()=>{
             
             }
             catch(error){
-            toast.error(error.message||"An error occurred during sign in")
+              toast.error(error.message||"An error occurred during sign in")
             }
         }
     }
@@ -77,16 +77,16 @@ export const SignIn=()=>{
           <div className='mt-auto'>
                 <MainContainer>
                     <ContentContainer>
-                        <div className="max-w-[41rem] flex gap-4 mx-auto justify-between items-center py-12 px-3 md:px-6 shadow-2xl bg-white rounded-md">
+                        <div className="max-w-[40rem] flex gap-4 mx-auto justify-between items-center py-12 px-3 md:px-6 shadow-2xl bg-white rounded-md">
                             {/* image section */}
                             <div className='hidden md:block'>
                                 <img src="/assets/images/signIn-min.png" alt="SignUpImage"  className='max-w-[18rem] pt-2 object-cover' />
                             </div>
 
                             {/* form section */}
-                            <div className='max-w-full mx-auto'>
+                            <div className='max-w-full mx-auto px-7'>
                                 <h1 className='text-[1.2rem] font-semibold text-center mb-3'>Sign In</h1>
-                                <form action="#" className=''>
+                                <form action="#" >
 
                                     <div>
                                         <div className='relative mt-3'>
@@ -116,26 +116,10 @@ export const SignIn=()=>{
                                     </div>
                                     
                                 
-                                    <p className='mt-7 text-sm text-center text-secondary'><Link to="" className='text-secondary'>Forgot password ?</Link></p>
+                                    <p className='mt-7 text-sm text-center text-secondary'><Link to="/forgot_password" className='text-secondary'>Forgot password ?</Link></p>
                                     <p className='mt-2 text-sm text-center'>Don't You have an account ?<Link to="/sign_up" className='text-secondary ml-1 font-semibold tracking-[0.15px]'>Sign Up</Link></p>
-                                    
-                                    <div className='mt-3 flex items-center max-w-full mx-auto  justify-center'>
-                                        <span className='border border-gray-600 w-full h-0'></span>
-                                        <span className='px-3'>Or</span>
-                                        <span className='border border-gray-600 w-full h-0'></span>
-                                    </div>
-                                    
-                                    <div className='text-center'>
-                                       <button className='text-sm border border-gray-600 rounded-md px-4 py-1 mt-3'><FcGoogle className='inline-block text-lg mx-1 mt-[-0.13rem]'/> Continue with Google</button>
-                                    </div>
-                                    
+                                                                                                    
                                 </form>
-
-                                {/* {success&& <div>{success}</div>}
-                                {error&& <div>{error}</div>} */}
-                                {/* {success&& <div>{toast.success(success)}</div>}
-                                {error&& <div>{toast.error(error)}</div>} */}
-                                {/* {toast.error(error)} */}
 
                             </div>
                         </div>
