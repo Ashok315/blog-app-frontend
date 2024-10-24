@@ -1,4 +1,4 @@
-import api from "./api";
+import api, { apiWithoutInterceptor } from "./api";
 
 // create blog 
 const createBlog=async(blogData)=>{
@@ -43,7 +43,7 @@ const getLatestBlogs=async ()=>{
 const getBlogBySlug=async (slug)=>{
    
   try{
-      const response=await api.get(`/blogs/get-blog/${slug}`)
+      const response=await apiWithoutInterceptor.get(`/blogs/get-blog/${slug}`)
       const post=response.data.blog;
       return post;   
   }
@@ -67,7 +67,7 @@ const updateBlog=async(blogId,blogData)=>{
 // like blog post
 const likeBlog=async (blogId)=>{
   try{
-      const response=await api.patch(`/blogs/${blogId}/like`, {showLoading:false});
+      const response=await apiWithoutInterceptor.patch(`/blogs/${blogId}/like`);
       return response;
  
   }

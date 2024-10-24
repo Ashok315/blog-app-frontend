@@ -1,4 +1,4 @@
-import api from './api'
+import api, { apiWithoutInterceptor } from './api'
 
 // get current user
 const getCurrentUser=async ()=>{
@@ -6,7 +6,7 @@ const getCurrentUser=async ()=>{
         const response=await api.get('/users/getCurrentUser')
         return response;
     } catch (error) {
-        throw new Error({'error':error.message})
+        throw new Error(error.message)
     }
 }
 
@@ -17,7 +17,7 @@ const updateProfile=async(userId,formData)=>{
         return response;
     }
     catch(error){
-        throw new Error({'error':error.message})
+        throw new Error(error.message)
     }
 
 }
@@ -25,7 +25,7 @@ const updateProfile=async(userId,formData)=>{
 // update profile image
 const updateProfileImage=async (userId,file,progressStatus)=>{
     try{
-       const response=await api.patch(`/users/updateProfileImage/${userId}`,file,{
+       const response=await apiWithoutInterceptor.patch(`/users/updateProfileImage/${userId}`,file,{
         onUploadProgress:(data)=>{
              progressStatus(Math.round((data.loaded*100)/data.total))
         },
@@ -33,7 +33,7 @@ const updateProfileImage=async (userId,file,progressStatus)=>{
        return response;
     }
     catch(error){
-        throw new Error({'error':error.message})
+        throw new Error(error.message)
     }
 }
 

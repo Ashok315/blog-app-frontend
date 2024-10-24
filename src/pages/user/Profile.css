@@ -9,6 +9,9 @@ table,th,td{
   th{
     color:gray;         
   }
+  th:is(.dark *){
+    color:rgba(255, 255, 255, 0.683)
+  }
 
   table{
     width:90%;

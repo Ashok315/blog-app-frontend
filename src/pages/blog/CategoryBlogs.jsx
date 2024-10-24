@@ -30,8 +30,7 @@ export const CategoryBlogs=()=>{
 
     return (
         blogs.length!==0?
-                <MainContainer>
-                    
+                <MainContainer>                
                     <ContentContainer className='mt-6'> 
                         <Suspense fallback={<Loading></Loading>}>
                             <BlogList blogs={blogs.slice(indexOfFirstPost,indexOfLastPost)} ></BlogList>  
@@ -40,7 +39,6 @@ export const CategoryBlogs=()=>{
                         {/* pagination */}
                         <Pagination postPerPage={postPerPage} totalPosts={blogs?.length} currentPage={currentPage} paginate={paginate}></Pagination>
                     </ContentContainer>   
-        
                 </MainContainer>
             :<NotFound/>
          )

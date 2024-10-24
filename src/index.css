@@ -13,8 +13,13 @@ body{
 
 }
 
-#root{
+input:-webkit-autofill+.icon{
+    color:#6A6767!important;
+    border-color: #6A6767!important;
+}
+
+/* #root{
     display: flex;
     flex-direction: column;
     height:100vh;
-}
+} */

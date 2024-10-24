@@ -69,7 +69,7 @@ export const BlogForm=({blog})=>{
                 }
             
             }catch(err){
-                toast.error(err.message)
+                toast.error(err.message);
             }            
          }
 
@@ -95,7 +95,7 @@ export const BlogForm=({blog})=>{
 
                 <div className="mt-2 gap-5 flex ">
                     <div className="basis-full">
-                        <Input type="file" name="feature_image" onChange={handleChange} label="Feature Image" padding="py-[0.2rem] pb-[1.85rem] px-3"></Input>
+                        <Input type="file" name="feature_image" onChange={handleChange} label="Feature Image" padding="py-[0.463rem] pb-[2.1rem] px-3"></Input>
                     </div>
                     <div className="basis-64">
                         <Select name="visibility" label="Visibility" options={["public","private"]} preVal={blog?.visibility} onChange={handleChange}></Select>
@@ -103,7 +103,7 @@ export const BlogForm=({blog})=>{
                 </div>
                 
                 <div className='text-center'>
-                    <Button  onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-4 rounded-md'>{blog?"Update":"Submit"}</Button>
+                    <Button  onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary dark:bg-primary dark:hover:bg-lightPrimary duration-300 text-white mt-4 rounded-md'>{blog?"Update":"Submit"}</Button>
                 </div>
             </form>   
                                 

@@ -52,10 +52,9 @@ export const ResetPassword = () => {
     }
 
   return (
-    <div className='mt-auto'>
-        <MainContainer>
-            <ContentContainer>
-                <div className="max-w-[23rem] mx-auto py-12 px-3 md:px-6 shadow-2xl bg-white rounded-md">
+
+            <div className="min-h-screen flex flex-col justify-center items-center pt-[6rem] pb-[3rem] px-[1rem] md:px-[2rem]">
+                <div className="max-w-[23rem] py-12 px-3 md:px-6 shadow-2xl bg-white dark:bg-slate-700 rounded-md">
             
                     {/* form section */}
                     <div className='max-w-full mx-auto px-10'>
@@ -65,22 +64,22 @@ export const ResetPassword = () => {
                             <div>
                                 <div className='relative mt-2.5'>
                                     <Input name="password" value={newPassword} onChange={handleChange} placeholder="New Password" padding="px-[2.6rem] pr-5" className={`${errors?.newPassword&&'border-[1.5px] border-red-500'}`}></Input>
-                                    <span className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><BiLockOpen></BiLockOpen></span>
+                                    <div className='icon absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500 dark:text-gray-300 dark:border-gray-300'><BiLockOpen></BiLockOpen></div>
                                 </div>
                                 {errors?.newPassword&&<div className='text text-red-500 -mb-1'>{errors.newPassword}</div>}
                             </div>
                             
                             <div>
                                 <div className='relative mt-2.5'>
-                                    <Input ref={confirmNewPasswordRef} type="password" name="confirmPassword" placeholder="Confirm New Password" padding="px-[2.6rem] pr-5" className={`${errors?.confirmNewPassword&&'border-[1.5px] border-red-500'}`}></Input>
-                                    <span className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><BiLock></BiLock></span>
+                                    <Input ref={confirmNewPasswordRef} type="password" name="confirmPassword" placeholder="Confirm New Password" autocomplete="new-password" padding="px-[2.6rem] pr-5" className={`${errors?.confirmNewPassword&&'border-[1.5px] border-red-500'}`}></Input>
+                                    <div className='icon absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500 dark:text-gray-300 dark:border-gray-300'><BiLock></BiLock></div>
                                 </div>
                                 {errors?.confirmNewPassword&&<div className='text text-red-500 -mb-1'>{errors.confirmNewPassword}</div>}
                             </div>
 
                         
                             <div className='text-center'>
-                                <Button onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-4'>Submit</Button>
+                                <Button onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary dark:bg-primary dark:hover:bg-lightPrimary duration-300 text-white mt-4'>Submit</Button>
                             </div>
                             
                                                                                             
@@ -88,8 +87,6 @@ export const ResetPassword = () => {
 
                     </div>
                 </div>
-            </ContentContainer>
-        </MainContainer>
-    </div>
+            </div>
   )
 }

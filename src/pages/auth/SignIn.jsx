@@ -5,7 +5,7 @@ import { BsKey } from 'react-icons/bs';
 import { useState } from 'react';
 import authService from '../../services/authService';
 import userService from '../../services/userService';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { login } from '../../redux/authSlice';
 
@@ -16,8 +16,10 @@ export const SignIn=()=>{
     
     const navigate=useNavigate();
     const dispatch=useDispatch();
+    const themeMode=useSelector(state=>state.theme.mode);
 
     const [errors, setErrors]=useState();
+
     
     // validate email
     const validateEmail=(email)=>{
@@ -74,13 +76,11 @@ export const SignIn=()=>{
 
     return (
     
-          <div className='mt-auto'>
-                <MainContainer>
-                    <ContentContainer>
-                        <div className="max-w-[40rem] flex gap-4 mx-auto justify-between items-center py-12 px-3 md:px-6 shadow-2xl bg-white rounded-md">
+        <div className='min-h-screen flex flex-col justify-center items-center pt-[6rem] pb-[3rem] px-[1rem] md:px-[2rem]'>                    
+            <div className="max-w-[40rem] flex gap-4 justify-between items-center py-12 px-3 md:px-6 shadow-2xl bg-white dark:bg-slate-700 rounded-md">
                             {/* image section */}
                             <div className='hidden md:block'>
-                                <img src="/assets/images/signIn-min.png" alt="SignUpImage"  className='max-w-[18rem] pt-2 object-cover' />
+                                <img src={themeMode==="light"?"/assets/images/signIn-min.png":"/assets/images/signIn-dark.png"} alt="SignUpImage"  className='max-w-[18rem] pt-2 object-cover' />
                             </div>
 
                             {/* form section */}
@@ -91,15 +91,15 @@ export const SignIn=()=>{
                                     <div>
                                         <div className='relative mt-3'>
                                             <Input  name="email" value={formData.email} onChange={handleChange}  placeholder="Email" padding="px-[2.6rem] pr-5" className={`${errors?.email&&'border-[1.5px] border-red-500'}`}></Input>
-                                            <div className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><CgMail></CgMail></div>      
+                                            <div className='icon absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500 dark:text-gray-300 dark:border-gray-300'><CgMail></CgMail></div>      
                                         </div>
                                         {errors?.email&&<div className='text text-red-500 -mb-1'>{errors.email}</div>}
                                     </div>
 
                                     <div> 
                                         <div className='relative mt-3'>
-                                            <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Password" padding="px-[2.6rem] pr-5" className={`${errors?.password&&'border-[1.5px] border-red-500'}`}></Input>
-                                            <div className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><BsKey className='rotate-[145deg]'></BsKey></div>
+                                            <Input name="password" type="password" value={formData.password} onChange={handleChange} placeholder="Password" autocomplete="new-password" padding="px-[2.6rem] pr-5" className={`${errors?.password&&'border-[1.5px] border-red-500'}`}></Input>
+                                            <div className='icon absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500 dark:text-gray-300 dark:border-gray-300'><BsKey className='rotate-[145deg]'></BsKey></div>
                                         </div>
                                         {errors?.password&&<div className='text text-red-500'>{errors.password}</div>}
                                     </div>
@@ -112,19 +112,17 @@ export const SignIn=()=>{
                                     
                                 
                                     <div className='text-center'>
-                                        <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-5'>Sign In</Button>
+                                        <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary dark:bg-primary dark:hover:bg-lightPrimary duration-300 text-white mt-5'>Sign In</Button>
                                     </div>
                                     
                                 
-                                    <p className='mt-7 text-sm text-center text-secondary'><Link to="/forgot_password" className='text-secondary'>Forgot password ?</Link></p>
-                                    <p className='mt-2 text-sm text-center'>Don't You have an account ?<Link to="/sign_up" className='text-secondary ml-1 font-semibold tracking-[0.15px]'>Sign Up</Link></p>
+                                    <p className='mt-7 text-sm text-center text-secondary'><Link to="/forgot_password" className='text-secondary dark:text-gray-200'>Forgot password ?</Link></p>
+                                    <p className='mt-2 text-sm text-center'>Don't You have an account ?<Link to="/sign_up" className='text-secondary dark:text-gray-200 ml-1 font-semibold tracking-[0.15px]'>Sign Up</Link></p>
                                                                                                     
                                 </form>
 
                             </div>
                         </div>
-                    </ContentContainer>
-                </MainContainer>
-          </div>
+                        </div>
     )
 }
