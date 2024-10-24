@@ -41,14 +41,14 @@ export const Carousel = () => {
             <div className="flex justify-between items-center relative text-white">
                 {/*Left arrow button  */}
                 <Button
-                    className="absolute top-1/2 left-0 -translate-y-1/2 rounded-sm py-2 !px-[0.45rem] ml-1 bg-gray-600 bg-opacity-50 opacity-90 hover:bg-opacity-70 duration-200"
+                    className="absolute top-1/2 left-0 z-10 -translate-y-1/2 rounded-sm py-2 !px-[0.45rem] ml-1 bg-gray-600 bg-opacity-50 opacity-90 hover:bg-opacity-70 duration-200"
                     onClick={handlePrevSlider}
                     >
                         <BiLeftArrow className="text-xs" fetchpriority="low"></BiLeftArrow>    
                 </Button>
 
                 {/* Carousel images */}
-                <div className="bg-gray-900 w-full -z-40 carousel-inner relative h-[55vh]">
+                <div className="bg-gray-900 w-full  carousel-inner relative h-[55vh]">
                   {imageData.map((imagePath, i) => (
                       <img
                         src={`${imagePath}.jpg`}
@@ -64,14 +64,14 @@ export const Carousel = () => {
                 </div>
                 
                 {/* inner carousel text in medium screen */}
-                <div className='hidden md:block absolute left-[6.5rem]'>
+                <div className='hidden md:block absolute left-[6.5rem] z-50'>
                     <p className='tracking-wide font-semibold text-[1.2rem] w-[56%] leading-[1.63rem]'> Start Your Blogging Journey Today And reach a global audience</p>
                     <p className='pt-[0.65rem] w-[45%] leading-5 text-sm'>Empower your voice, build your audience, And make an impact with every post</p>
                     <Button type='button' onClick={()=>navigate('/add_blog')} className='mt-[0.9rem] bg-primary text-white hover:bg-lightPrimary duration-300 rounded-md'>Start Writing Now</Button>
                 </div>
                 
                 {/*inner carousel text in small screen*/}
-                <div className='md:hidden w-[76vw] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2'>
+                <div className='md:hidden w-[76vw] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-50'>
                   <p className='text-center font-semibold tracking-wide leading-[1.5rem]'>Start Your Blogging Journey Today And reach a global audience</p>
                   <div className='text-center'>
                     <Button type='button' onClick={()=>navigate('/add_blog')} className='mt-[0.8rem] bg-primary text-white hover:bg-lightPrimary duration-300 rounded-md'>Start Writing Now</Button>
@@ -80,7 +80,7 @@ export const Carousel = () => {
 
                 {/* Right arrow button  */}
                 <Button
-                    className="absolute top-1/2 right-0 -translate-y-1/2 rounded-sm py-2 !px-[0.45rem] mr-1 bg-gray-600 bg-opacity-50 opacity-90 hover:bg-opacity-70 duration-200"
+                    className="absolute top-1/2 right-0 z-20 -translate-y-1/2 rounded-sm py-2 !px-[0.45rem] mr-1 bg-gray-600 bg-opacity-50 opacity-90 hover:bg-opacity-70 duration-200"
                     onClick={handlerNextSlider}
                     >
                           <BiRightArrow className="text-xs" fetchpriority="low"></BiRightArrow>                 

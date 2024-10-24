@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import lightLogo from '../../assets/images/lightLogo.svg'
+import logo from "../../assets/images/logo.svg"
 import { BsFacebook, BsGithub, BsInstagram, BsLinkedin, BsTwitterX } from 'react-icons/bs'
 import { ContentContainer } from './ContentContainer'
 
 export const Footer = () => {
   return (
-    <footer className='bg-secondary w-full mt-auto'>
+    <footer className='bg-secondary dark:bg-slate-800 w-full mt-auto'>
         <ContentContainer className='flex flex-col gap-5 md:flex-row md:gap-3 justify-evenly items-center px-3 text-slate-200 py-5'>
            
-            {/* social-media links */}
+            {/* social-media links */} 
             <div>
                     <ul className='flex justify-center items-center'> 
                         <li className='leading-6 mt-1'><Link to="/"  className="block rounded  hover:bg-lightPrimary duration-300 p-1 mx-1"><BsGithub></BsGithub></Link></li>
@@ -19,7 +20,7 @@ export const Footer = () => {
                         <li className='leading-6 mt-1'><Link to="/test" className="block rounded  hover:bg-lightPrimary duration-300 p-1 mx-1"><BsTwitterX></BsTwitterX></Link></li>
                     </ul>
             </div>
-            
+               
             {/* categories links */}
             <div>
                     <ul className='md:flex justify-center items-center text-[0.9rem] text-center'> 
@@ -32,8 +33,12 @@ export const Footer = () => {
             </div>
                 
             {/* logo */}
-            <div>
+            <div className='dark:hidden'>
                 <Link to="/" className=''><img src={lightLogo} className='max-w-[83px] md:max-w-[92px] mx-auto' alt="logo" /></Link> 
+            </div>
+
+            <div className='light:hidden dark:brightness-[1.20] contrast-[0.85]'>
+                <Link to="/" className=''><img src={logo} className='max-w-[83px] md:max-w-[92px] mx-auto' alt="logo" /></Link> 
             </div>
            
         </ContentContainer>

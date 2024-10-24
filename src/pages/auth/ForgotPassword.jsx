@@ -52,10 +52,8 @@ export const ForgotPassword = () => {
 
     
   return (
-    <div className='mt-auto'>
-        <MainContainer>
-            <ContentContainer>
-                <div className="max-w-[25rem] mx-auto py-12 px-3 md:px-6 shadow-2xl bg-white rounded-md">
+            <div className="min-h-screen flex flex-col justify-center items-center pt-[6rem] pb-[3rem] px-[1rem] md:px-[2rem]">
+                <div className="max-w-[25rem] py-12 px-3 md:px-6 shadow-2xl bg-white dark:bg-slate-700 rounded-md">
             
                     {/* form section */}
                     <div className='max-w-full mx-auto px-10'>
@@ -65,14 +63,14 @@ export const ForgotPassword = () => {
                             <div>
                                 <div className='relative mt-6'>
                                         <Input  name="email" value={email} onChange={handleChange}  placeholder="Email" padding="px-[2.6rem] pr-5" className={`${errors?.email&&'border-[1.5px] border-red-500'}`}></Input>
-                                        <div className='absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500'><CgMail></CgMail></div>      
+                                        <div className='icon absolute left-1 top-1/2 -translate-y-1/2 px-[0.4rem] text-lightBorder border-r-[0.1rem] border-gray-500 dark:text-gray-300 dark:border-gray-300'><CgMail></CgMail></div>      
                                     </div>
                                     {errors?.email&&<div className='text text-red-500 -mb-1'>{errors.email}</div>}
                             </div>
 
                         
                             <div className='text-center'>
-                                <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary duration-300 text-white mt-4'>Send</Button>
+                                <Button type="submit" onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary dark:bg-primary dark:hover:bg-lightPrimary duration-300 text-white mt-4'>Send</Button>
                             </div>
                             
                                                                                             
@@ -80,8 +78,6 @@ export const ForgotPassword = () => {
 
                     </div>
                 </div>
-            </ContentContainer>
-        </MainContainer>
-    </div>
+            </div>
   )
 }

@@ -28,21 +28,19 @@ export const AllBlogs=()=>{
                     if(posts){
                         setBlogs(posts.reverse());
                         setCurrentPage(1);
-                    }
-                
+                    }         
             })
         },[query])
 
     return (
-        <MainContainer>     
+        <MainContainer> 
            <ScrollerList lists={categories} navigateListItem={changeQuery} activeListItem={query} ></ScrollerList>
-            <ContentContainer className='mt-11'>
+            <ContentContainer className='mt-8'>
                 <Suspense fallback={<Loading></Loading>}>
                      <BlogList blogs={blogs.slice(indexOfFirstPost,indexOfLastPost)}></BlogList>
                 </Suspense>
                 <Pagination postPerPage={postPerPage} totalPosts={blogs?.length} currentPage={currentPage} paginate={paginate}></Pagination>
-            </ContentContainer>   
-      
+            </ContentContainer>  
         </MainContainer>
     )
 }

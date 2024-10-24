@@ -20,17 +20,15 @@ export const EditBlog = () => {
 
   return (
     
-        <div className='mt-auto'>
-            <MainContainer>
-                <ContentContainer>  
-                   <div className="max-w-[40rem] mx-auto py-8 px-5 md:px-14 shadow-2xl bg-white rounded-md">
+  
+                <div className="min-h-screen flex flex-col justify-center items-center pt-[6rem] pb-[3rem] px-[1rem] md:px-[2rem]">  
+                   <div className="max-w-[40rem] py-8 px-5 md:px-14 shadow-2xl bg-white dark:bg-slate-700 rounded-md">
                         <h1 className='text-xl font-semibold text-center mb-6'>Edit Blog</h1>
                         <Suspense fallback={<Loading></Loading>}>
                             <BlogForm blog={blog}></BlogForm>  
                         </Suspense>
                    </div>                  
-                </ContentContainer>
-            </MainContainer>
-        </div>  
+                </div>
+
   )
 }

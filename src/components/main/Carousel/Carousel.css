@@ -16,6 +16,24 @@
     }
 }
 
+@keyframes fadeInDark {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 0.7;
+    }
+}
+
+@keyframes fadeOutDark {
+    from {
+        opacity: 0.7;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
 /* Apply animations to the carousel items */
 .carousel-item {
     position: absolute;
@@ -33,4 +51,14 @@
 .carousel-item.exiting {
     z-index: 1;
     animation: fadeOut 1.5s ease-in-out; /* Apply fade-out when the slide is exiting */
+}
+
+.carousel-item.exiting:is(.dark *) {
+    z-index: 1;
+    animation: fadeOutDark 1.5s ease-in-out
+}
+.carousel-item.active:is(.dark *) {
+    opacity: 0.7;
+    z-index: 2;
+    animation: fadeInDark 1.2s ease-in-out;
 }
