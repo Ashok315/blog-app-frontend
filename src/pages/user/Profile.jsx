@@ -99,9 +99,9 @@ export const Profile = () => {
 
   return (
 
-        <div className="min-h-screen flex flex-col justify-center items-center pt-[6rem] pb-[3rem] px-[1rem] md:px-[2rem]">
+        <div className="min-h-screen flex flex-col justify-center items-center px-[1rem] md:px-[2rem]">
 
-            <div className='w-full max-w-md mx-auto bg-white dark:bg-slate-700 text-center rounded-md py-7 shadow-lg'>
+            <div className='w-full max-w-md mx-auto  my-[5.5rem] bg-white dark:bg-slate-700 text-center rounded-md py-7 shadow-lg'>
                 {/* title */}
                 <p className='text-lg font-semibold text-center'>My Profile</p>
                

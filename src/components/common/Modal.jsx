@@ -28,8 +28,8 @@ export const Modal=({title,isVisible,closeModal,modalType="",children,width="max
     return (
         <>
             {isVisible&&
-                <div ref={modalBackdropRef} onClick={handleClickOutside} className='modal-wrapper fixed inset-0 backdrop-brightness-[0.4] overflow-y-scroll z-[50] px-4'>
-                    <div className={`modal-content ${width}  bg-white dark:bg-slate-700 mx-auto my-[5rem] rounded-[0.25rem] overflow-hidden shadow-xl`}>       
+                <div ref={modalBackdropRef} onClick={handleClickOutside} className='modal-wrapper fixed inset-0 backdrop-brightness-[0.4] overflow-y-scroll z-[90] px-4'>
+                    <div className={`modal-content ${width} bg-white dark:bg-slate-700 mx-auto my-[5rem] rounded-[0.25rem] overflow-hidden shadow-xl`}>       
                        
                         <div className="modal-header flex justify-between items-center py-2 px-5 font-semibold text-white bg-lightPrimary">
                             <h1>{title}</h1>
