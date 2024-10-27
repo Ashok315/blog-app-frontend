@@ -94,7 +94,7 @@ export const Header = () => {
           {/* searchBar */}
           <div className='relative text-sm lg:ml-6'>
               <form action="#"  onSubmit={handleSearch}>
-                  <Input placeholder="Search" name="search" value={searchText} onChange={handleChange} className="!h-[1.85rem] dark:bg-slate-700 dark:border-slate-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-400 placeholder-slate-400"  padding="!px-4 pr-[2.3rem]"></Input>
+                  <Input placeholder="Search" name="search" value={searchText} onChange={handleChange} className="!h-[1.85rem] dark:bg-slate-700 dark:border-slate-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-400"  padding="!px-4 pr-[2.3rem]"></Input>
                   <BsSearch className='absolute top-2.5 right-4 text-lightBorder dark:text-slate-400'></BsSearch>
                 </form>
           </div>
@@ -164,7 +164,7 @@ export const Header = () => {
                   {/* searchBar */}
                   <div className='relative text-sm lg:ml-6'>
                     <form action="#" className='' onSubmit={handleSearch}>
-                    <Input placeholder="Search" name="search" value={searchText} onChange={handleChange} className="!h-[1.85rem] dark:bg-slate-700 dark:border-slate-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-400 placeholder-slate-400"  padding="!px-4 pr-[2.3rem]" ></Input>
+                    <Input placeholder="Search" name="search" value={searchText} onChange={handleChange} className="!h-[1.85rem] dark:bg-slate-700 dark:border-slate-700 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-400"  padding="!px-4 pr-[2.3rem]" ></Input>
                       <BsSearch className='absolute top-2.5 right-4 text-lightBorder dark:text-slate-400'></BsSearch>
                     </form>
                   </div>

@@ -76,8 +76,8 @@ export const SignIn=()=>{
 
     return (
     
-        <div className='min-h-screen flex flex-col justify-center items-center pt-[6rem] pb-[3rem] px-[1rem] md:px-[2rem]'>                    
-            <div className="max-w-[40rem] flex gap-4 justify-between items-center py-12 px-3 md:px-6 shadow-2xl bg-white dark:bg-slate-700 rounded-md">
+        <div className='min-h-screen flex flex-col justify-center items-center px-[1rem] md:px-[2rem]'>                    
+            <div className="max-w-[40rem] flex gap-4 justify-between items-center my-[5.5rem] py-12 px-3 md:px-6 shadow-2xl bg-white dark:bg-slate-700 rounded-md">
                             {/* image section */}
                             <div className='hidden md:block'>
                                 <img src={themeMode==="light"?"/assets/images/signIn-min.png":"/assets/images/signIn-dark.png"} alt="SignUpImage"  className='max-w-[18rem] pt-2 object-cover' />

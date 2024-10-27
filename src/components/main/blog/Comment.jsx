@@ -46,20 +46,20 @@ export const Comment = ({blog,refresh}) => {
             <p>Add a Comment</p>
             <div className='flex gap-2 items-center mt-2'>
                 <img src={blog?.author.image} alt="author_image" className='w-[32px] h-[32px] max-w-[35px] max-h-[35px] rounded-full object-cover' />        
-                <textarea id='comment' name="comment" value={comment} onChange={(e)=>setComment(e.target.value)} placeholder='Write a comment' rows="1" className='w-full dark:bg-slate-600 dark:text-white dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-300 dark:placeholder-slate-300  border-gray-500 p-2 rounded-md'></textarea>
+                <textarea id='comment' name="comment" value={comment} onChange={(e)=>setComment(e.target.value)} placeholder='Write a comment' rows="1" className='w-full border border-lightBorder focus:outline-lightPrimary dark:border-slate-600 dark:bg-slate-600 dark:text-white dark:focus:outline-none dark:focus:ring-[1.5px] dark:focus:ring-gray-300 dark:placeholder-slate-300 p-2 rounded-md'></textarea>
                 <Button onClick={handleSubmit} className='bg-lightPrimary hover:bg-primary dark:bg-primary dark:hover:bg-lightPrimary duration-300 text-white rounded-md'>Submit</Button>
 
             </div>
         </div>
 
-        {/*all comments  */}
+        {/*list of comments  */}
         <p className='mt-5 -mb-2'>Comments</p>       
         <hr className='border border-slate-300 my-4'></hr>   
         {
           blog?.comments.slice(blog.comments.length>=5?blog.comments.length-commentList:0, blog.comments.length).reverse().map((item)=>{
             if(item.comment){
                 return (       
-                         <div key={item._id} className='flex gap-2 mt-[1.1rem] ml-8'>
+                         <div key={item._id} className='flex gap-2 mt-[1.1rem]'>
                               <div>
                                  <img src={item.commentedBy.image} alt="author_image" className='w-[32px] h-[32px] max-w-[35px] max-h-[35px] rounded-full object-cover' />     
                               </div>

@@ -40,7 +40,7 @@ export const ScrollerList = ({lists,navigateListItem,activeListItem}) => {
     }
 
   return (
-    <div className='overflow-hidden mt-2'>
+    <div className='overflow-hidden'>
 
         {/* hidden verticle scroll bar when model is visible  */}
         <style>{`#btn-tabs::-webkit-scrollbar{display:none}`}</style>
