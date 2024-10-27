@@ -71,7 +71,7 @@ export const Carousel = () => {
                 </div>
                 
                 {/*inner carousel text in small screen*/}
-                <div className='md:hidden w-[76vw] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-50'>
+                <div className='md:hidden carousel-text w-[76vw] absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 z-50'>
                   <p className='text-center font-semibold tracking-wide leading-[1.5rem]'>Start Your Blogging Journey Today And reach a global audience</p>
                   <div className='text-center'>
                     <Button type='button' onClick={()=>navigate('/add_blog')} className='mt-[0.8rem] bg-primary text-white hover:bg-lightPrimary duration-300 rounded-md'>Start Writing Now</Button>
