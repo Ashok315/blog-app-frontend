@@ -20,7 +20,10 @@ export default {
          dark:'#192e3d',
          darkText:'#ECECEC',
          darker:"#12202a"
-      }
+      },
+      fontFamily: {
+        sans: ['Roboto', 'ui-sans-serif', 'system-ui']
+      },
     },
   },
   plugins: [],
