@@ -62,8 +62,8 @@ export const Carousel = () => {
                 
                 {/* inner carousel text in medium screen */}
                 <div className='hidden md:block absolute left-[6.5rem] z-50'>
-                    <p className='tracking-wide font-semibold text-[1.15rem] w-[56%] leading-[1.6rem]'> Start Your Blogging Journey Today And reach a global audience</p>
-                    <p className='pt-[0.65rem] w-[50%] leading-[1.2rem] text-sm'>Empower your voice, build your audience, And make an impact with every post</p>
+                    <p className='tracking-wide font-semibold text-[1.18rem] w-[56%] leading-[1.6rem]'> Start Your Blogging Journey Today And reach a global audience</p>
+                    <p className='pt-[0.65rem] w-[48%] leading-[1.2rem] text-sm'>Empower your voice, build your audience, And make an impact with every post</p>
                     <Button type='button' onClick={()=>navigate('/add_blog')} aria-label="create blog" className='mt-[0.9rem] bg-primary text-white hover:bg-lightPrimary duration-300 rounded-md'>Start Writing Now</Button>
                 </div>
                 
