@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 
 export const BlogForm=({blog})=>{
 
-
     const [formData,setFormData]=useState({title:"",content:"",category:"uncategorized",visibility:"public",feature_image:""});
     const navigate=useNavigate();
 
@@ -61,7 +60,7 @@ export const BlogForm=({blog})=>{
                     }
                 }
                 else{
-                    const response=await blogService.updateBlog(blog?._id,formData);
+                    const response=await blogService.updateBlog(blog?._id,blogData);
                     if(response){
                         toast.success(response.data.message)
                         navigate('/')
