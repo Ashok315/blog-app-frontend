@@ -100,7 +100,7 @@ export const Header = () => {
             
             {/* navLinks */}     
             <ul className='hidden md:flex md:gap-5 content-start lg:ml-6 text-[0.88rem] text-gray-700 dark:text-[#b6b8ba] font-semibold tracking-wide'>
-                <li><Link to="/" aria-label='home' className={`border-b-2 ${location.pathname=='/'?'border-primary text-black dark:text-white':"border-transparent"} hover:text-black dark:hover:text-white ease-in-out duration-300 pb-1`}>Home</Link></li>
+                <li><Link to="/" aria-label='home' className={`border-b-2 ${location.pathname=='/'?'border-primary text-black dark:text-white':"border-transparent"} hover:text-black dark:hover:text-white ease-in-out duration-300 pb-1`}>Home1</Link></li>
                 <li><Link to="/blogs" aria-label='blogs' className={`border-b-2 ${location.pathname=='/blogs'?'border-primary text-black dark:text-white':"border-transparent"} hover:text-black dark:hover:text-white ease-in-out duration-300 pb-1`}>Blogs</Link></li>
                 <li><Link to="/about_us" aria-label='about' className={`border-b-2 ${location.pathname=='/about_us'?'border-primary text-black dark:text-white':"border-transparent"} hover:text-black dark:hover:text-white ease-in-out duration-300 pb-1`}>About</Link></li>
             </ul>
